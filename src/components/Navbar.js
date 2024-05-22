@@ -1,8 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth, logout } from '../services/auth'; // Importujemy logout
-import logo from '../Assets/logo.png'; // Importujemy logo
-import Projects from '../pages/Projects'; // Importujemy komponent Projects
+import { useAuth, logout } from '../services/auth'; 
+import logo from '../Assets/logo.png'; 
+// import projects from '../pages/Projects'; 
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -10,17 +10,17 @@ const Navbar = () => {
   useEffect(() => {
     AOS.init({
       duration: 1000,
-      once: true // Animacja zostanie odtworzona tylko raz
+      once: true 
     });
   }, []);
 
   const navigate = useNavigate();
-  const { user } = useAuth(); // Usuwamy 'logout' z destrukturyzacji
+  const { user } = useAuth(); 
 
   const handleLogout = async () => {
     try {
-      await logout(); // Wylogowanie użytkownika
-      navigate('/'); // Przekierowanie do strony głównej
+      await logout(); 
+      navigate('/'); 
     } catch (error) {
       console.error('Error logging out:', error);
     }
