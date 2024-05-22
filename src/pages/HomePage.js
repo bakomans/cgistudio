@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import video from '../Assets/video barbara.mp4'; // Importujemy film
+import Comments from './comments'; // Importujemy komponent komentarzy
 
 const HomePage = () => {
   useEffect(() => {
@@ -47,12 +48,12 @@ const HomePage = () => {
         </div>
       </div>
       <div className="max-w-screen-xl px-4 py-8 mx-auto">
-      <video className="w-full rounded-lg shadow-md" autoPlay muted controls>
-  <source src={video} type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-
+        <video className="w-full rounded-lg shadow-md" autoPlay muted controls>
+          <source src={video} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
+      <Comments /> {/* Sekcja komentarzy */}
       <footer className="bg-gray-800 text-gray-200 py-4 text-center">
         <div className="container mx-auto">
           <p>&copy; {new Date().getFullYear()} CGI Studio. All rights reserved.</p>
