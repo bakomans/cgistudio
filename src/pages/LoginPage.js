@@ -1,8 +1,10 @@
+
 import React, { useState, useEffect } from 'react';
 import { loginWithEmail, signInWithGoogle } from '../services/auth';
 import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import logo from '../Assets/logo.png';
 
 const LoginPage = () => {
   const [email, setEmail] = useState('');
@@ -35,8 +37,8 @@ const LoginPage = () => {
   return (
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0" data-aos="fade-up">
-        <a href="#" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-          <img className="w-8 h-8 mr-2" src="https://flowbite.s3.amazonaws.com/blocks/marketing-ui/logo.svg" alt="logo" />
+        <a href="/HomePage" className="flex items-center mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+        <img src={logo} alt="logo" className="w-14 h-14 text-white m-4 bg-white-500 rounded-full" /> 
           C-GI STUDIO
         </a>
         <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
@@ -73,8 +75,8 @@ const LoginPage = () => {
               </div>
               <button type="submit" className="w-full text-white bg-blue-500 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-500 dark:hover:bg-blue-600 dark:focus:ring-blue-800">Log in via email</button>
               <p className="text-sm font-light text-gray-500 dark:text-gray-400">
-                Don't have an account yet? <a href="#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up here</a>
-              </p>
+        Don't have an account yet? <a href="/register" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Sign up here</a>
+      </p>
             </form>
           </div>
         </div>

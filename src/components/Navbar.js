@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../services/auth';
+import { useAuth, logout } from '../services/auth'; // Importujemy logout
 import logo from '../Assets/logo.png'; // Importujemy logo
+import Projects from '../pages/Projects'; // Importujemy komponent Projects
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
@@ -14,12 +15,12 @@ const Navbar = () => {
   }, []);
 
   const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  const { user } = useAuth(); // Usuwamy 'logout' z destrukturyzacji
 
   const handleLogout = async () => {
     try {
-      await logout();
-      navigate('/login');
+      await logout(); // Wylogowanie użytkownika
+      navigate('/'); // Przekierowanie do strony głównej
     } catch (error) {
       console.error('Error logging out:', error);
     }
@@ -29,15 +30,16 @@ const Navbar = () => {
     <header className="text-gray-600 body-font" data-aos="fade-down">
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <Link to="/" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
-          <img src={logo} alt="logo" className="w-12 h-12 text-white p-2 bg-white-500 rounded-full" /> {/* Dodajemy logo */}
+          <img src={logo} alt="logo" className="w-14 h-14 text-white m-4 bg-white-500 rounded-full" /> {/* Dodajemy logo */}
           <span className="ml-4 text-xl">CGI-STUDIO</span>
         </Link>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
           <Link to="/" className="mr-5 hover:text-gray-900">Home</Link>
+          <Link to="/projects" className="mr-5 hover:text-gray-900">Projects</Link> {/* Dodajemy link do sekcji projektów */}
           {user ? (
             <>
               <Link to="/user-panel" className="mr-5 hover:text-gray-900">User Panel</Link>
-              <button onClick={handleLogout} className="text-white px-4 bg-red-500 rounded-md">Logout</button>
+              <button onClick={handleLogout} className="text-white px-4 bg-purple-500 rounded-md">Logout</button>
             </>
           ) : (
             <>

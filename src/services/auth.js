@@ -1,5 +1,4 @@
-// auth.js
-import { signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithPopup, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from 'firebase/auth';
 import { auth } from '../firebaseConfig';
 import { GoogleAuthProvider } from 'firebase/auth';
 import { useState, useEffect } from 'react';
@@ -49,4 +48,13 @@ const loginWithEmail = async (email, password) => {
   }
 };
 
-export { useAuth, signInWithGoogle, registerWithEmail, loginWithEmail };
+const logout = async () => {
+  try {
+    await signOut(auth);
+  } catch (error) {
+    console.error('Błąd wylogowywania:', error);
+    throw error;
+  }
+};
+
+export { useAuth, signInWithGoogle, registerWithEmail, loginWithEmail, logout };

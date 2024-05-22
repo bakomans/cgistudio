@@ -47,10 +47,11 @@ const HomePage = () => {
         </div>
       </div>
       <div className="max-w-screen-xl px-4 py-8 mx-auto">
-        <video className="w-full rounded-lg shadow-md" controls>
-          <source src={video} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+      <video className="w-full rounded-lg shadow-md" autoPlay muted controls>
+  <source src={video} type="video/mp4" />
+  Your browser does not support the video tag.
+</video>
+
       </div>
       <footer className="bg-gray-800 text-gray-200 py-4 text-center">
         <div className="container mx-auto">
