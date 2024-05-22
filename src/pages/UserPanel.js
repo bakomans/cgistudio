@@ -149,14 +149,22 @@ const UserPanel = () => {
           </div>
         </div>
 
-        <div className="mt-10">
-          <h2 className="text-2xl font-semibold text-gray-900 dark:text-white">
-            Your Purchases
-          </h2>
-          <ul>
-            {userPurchases.map((purchase) => (
-              <li key={purchase.id} className="mt-4">
-                <div className="p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow">
+        {user && (
+          <div className="mt-6 p-4 bg-blue-100 dark:bg-blue-800 rounded-lg shadow">
+            <h3 className="text-lg font-medium text-blue-900 dark:text-blue-200">
+              Welcome, {user.email}
+            </h3>
+            <p className="text-blue-700 dark:text-blue-300">
+              Here are your purchased projects:
+            </p>
+          </div>
+        )}
+
+        <ul className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {userPurchases.map((purchase) => (
+            <li key={purchase.id} className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
+              <div className="w-full flex items-center justify-between p-6 space-x-6">
+                <div className="flex-1 truncate">
                   <h3 className="text-lg font-medium text-gray-900 dark:text-white">
                     {purchase.name}
                   </h3>
@@ -173,24 +181,24 @@ const UserPanel = () => {
                     Select Project
                   </button>
                 </div>
-              </li>
-            ))}
-          </ul>
+              </div>
+            </li>
+          ))}
+        </ul>
 
-          {selectedProject && (
-            <div className="mt-6 p-4 bg-green-100 dark:bg-green-800 rounded-lg shadow">
-              <h3 className="text-lg font-medium text-green-900 dark:text-green-200">
-                Selected Project
-              </h3>
-              <p className="text-green-700 dark:text-green-300">
-                {selectedProject.name}
-              </p>
-              <p className="text-green-900 dark:text-green-200 font-bold">
-                ${selectedProject.price}
-              </p>
-            </div>
-          )}
-        </div>
+        {selectedProject && (
+          <div className="mt-6 p-4 bg-green-100 dark:bg-green-800 rounded-lg shadow">
+            <h3 className="text-lg font-medium text-green-900 dark:text-green-200">
+              Selected Project
+            </h3>
+            <p className="text-green-700 dark:text-green-300">
+              {selectedProject.name}
+            </p>
+            <p className="text-green-900 dark:text-green-200 font-bold">
+              ${selectedProject.price}
+            </p>
+          </div>
+        )}
       </div>
     </section>
   );
