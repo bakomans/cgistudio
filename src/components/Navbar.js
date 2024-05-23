@@ -32,6 +32,18 @@ const Navbar = () => {
     backgroundPosition: 'center',
   };
 
+  const linkStyle = {
+    fontSize: '1.5rem',
+    marginRight: '1.5rem',
+    color: '#333',
+    textDecoration: 'underline',
+    transition: 'color 0.3s ease', // Dodajemy płynny przejście dla zmiany koloru
+  };
+
+  const pinkHover = {
+    color: 'pink', // Zmieniamy kolor na różowy po najechaniu myszką
+  };
+
   return (
     <header className="text-gray-600 body-font" data-aos="fade-down" style={navbarStyle}>
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
@@ -40,17 +52,17 @@ const Navbar = () => {
           <span className="ml-4 text-xl">CGI-STUDIO</span>
         </Link>
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          <Link to="/" className="mr-5 hover:text-gray-900">Home</Link>
-          <Link to="/projects" className="mr-5 hover:text-gray-900">Projects</Link>
+          <Link to="/" style={linkStyle} activeStyle={pinkHover}>Home</Link>
+          <Link to="/projects" style={linkStyle} activeStyle={pinkHover}>Projects</Link>
           {user ? (
             <>
-              <Link to="/user-panel" className="mr-5 hover:text-gray-900">User Panel</Link>
+              <Link to="/user-panel" style={linkStyle} activeStyle={pinkHover}>User Panel</Link>
               <button onClick={handleLogout} className="text-white px-4 bg-purple-500 rounded-md">Logout</button>
             </>
           ) : (
             <>
-              <Link to="/login" className="mr-5 hover:text-gray-900">Login</Link>
-              <Link to="/register" className="mr-5 hover:text-gray-900">Registration</Link>
+              <Link to="/login" style={linkStyle} activeStyle={pinkHover}>Login</Link>
+              <Link to="/register" style={linkStyle} activeStyle={pinkHover}>Registration</Link>
             </>
           )}
         </nav>
