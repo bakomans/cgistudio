@@ -29,7 +29,7 @@ const Projects = () => {
             description="A sleek and modern loft design with minimalist aesthetic."
             image="https://via.placeholder.com/500x300"
           />
-          <ProjectCard
+          {/* <ProjectCard
             title="Modern Loft"
             description="A sleek and modern loft design with minimalist aesthetic."
             image="https://via.placeholder.com/500x300"
@@ -43,7 +43,7 @@ const Projects = () => {
             title="Modern Loft"
             description="A sleek and modern loft design with minimalist aesthetic."
             image="https://via.placeholder.com/500x300"
-          />
+          /> */}
           {/* Dodaj więcej kart tutaj */}
         </div>
       </div>
