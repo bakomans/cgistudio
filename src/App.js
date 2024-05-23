@@ -6,7 +6,8 @@ import RegisterPage from './pages/RegisterPage';
 import UserPanel from './pages/UserPanel';
 import CheckoutPage from './pages/CheckoutPage';
 import HomePage from './pages/HomePage';
-import Projects from './pages/Projects'; // Dodaj import dla komponentu Projects
+import Projects from './pages/Projects'; // Import dla komponentu Projects
+import ProjectGallery from './pages/ProjectGallery'; // Import dla komponentu ProjectGallery
 
 const App = () => {
   return (
@@ -18,7 +19,8 @@ const App = () => {
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/user-panel" element={<UserPanel />} />
         <Route path="/checkout" element={<CheckoutPage />} />
-        <Route path="/projects" element={<Projects />} /> {/* Dodaj ścieżkę dla komponentu Projects */}
+        <Route path="/projects" element={<Projects />} /> {/* Ścieżka dla komponentu Projects */}
+        <Route path="/projects/:id" element={<ProjectGallery />} /> {/* Ścieżka dla komponentu ProjectGallery */}
       </Routes>
     </Router>
   );
