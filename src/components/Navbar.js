@@ -36,7 +36,7 @@ const Navbar = () => {
     fontSize: '1.5rem',
     marginRight: '1.5rem',
     color: '#333',
-    textDecoration: 'underline',
+    textDecoration: 'none',
     transition: 'color 0.3s ease', // Dodajemy płynny przejście dla zmiany koloru
   };
 
