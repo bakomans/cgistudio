@@ -21,14 +21,15 @@ const ProjectGallery = () => {
 
   const project = {
     id: 1,
-    title: "Modern Loft",
+    title: "TAPE A – OAK FRAME HOUSE",
+    description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
     images: [
       { src: img1, caption: "First Floor" },
       { src: img2, caption: "Front Elevation" },
       { src: img3, caption: "Ground Floor" },
       { src: img4, caption: "Left Elevation" },
       { src: img5, caption: "Rear Elevation" },
-      { src: img6, caption: "Right" }
+      { src: img6, caption: "Right Elevation" }
     ]
   };
 
@@ -45,7 +46,8 @@ const ProjectGallery = () => {
   return (
     <section className="bg-gray-100 dark:bg-gray-800 py-16">
       <div className="container mx-auto">
-        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-gray-200 mb-10" data-aos="fade-up">Gallery: {project.title}</h2>
+        <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-gray-200 mb-4" data-aos="fade-up">Gallery: {project.title}</h2>
+        <p className="text-lg text-center text-gray-700 dark:text-gray-300 mb-10" data-aos="fade-up">{project.description}</p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
           {project.images.map((image, index) => (
             <div key={index} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md" data-aos="fade-up">
@@ -73,7 +75,7 @@ const ProjectGallery = () => {
         contentLabel="Image Modal"
         className="flex items-center justify-center"
         overlayClassName="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center"
-        ariaHideApp={false} // Dodane, aby zapobiec błędom w testowaniu
+        ariaHideApp={false}
       >
         {selectedImage && (
           <div className="bg-white p-4 rounded-md max-w-4xl mx-auto w-11/12 h-5/6 flex flex-col items-center">

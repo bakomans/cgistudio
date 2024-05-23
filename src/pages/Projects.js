@@ -13,8 +13,8 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Modern Loft",
-      description: "A sleek and modern loft design with minimalist aesthetic.",
+      title: "Type A - OAK FRAME HOUSE",
+      description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house",
       images: [img1]
     },
     {
