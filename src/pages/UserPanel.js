@@ -1,207 +1,220 @@
 import React, { useEffect, useState } from 'react';
-import { auth } from '../firebaseConfig';
-import { onAuthStateChanged } from 'firebase/auth';
 import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 const UserPanel = () => {
   const [user, setUser] = useState(null);
-  const [selectedProject, setSelectedProject] = useState(null);
+  const [selectedProjects, setSelectedProjects] = useState([]);
+  const [selectedServices, setSelectedServices] = useState([]);
+  const [selectedOption, setSelectedOption] = useState('projects');
   const navigate = useNavigate();
 
-  // Symulacja listy zakupów użytkownika
-  const userPurchases = [
-    { id: 1, name: 'Modern Loft', description: 'A sleek and modern loft design with minimalist aesthetic.', price: 100 },
-    { id: 2, name: 'Cozy Cabin', description: 'A cozy cabin nestled in the woods, blending rustic and contemporary elements.', price: 150 },
-    { id: 3, name: 'Urban Oasis', description: 'An urban oasis in the heart of the city, featuring sustainable design solutions.', price: 200 }
+  const projects = [
+    {
+      id: 1,
+      title: "TAPE A – OAK FRAME HOUSE",
+      description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
+      price: 288.98
+    },
+    {
+      id: 2,
+      title: "TAPE B – OAK FRAME HOUSE",
+      description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
+      price: 288.98
+    },
+    {
+      id: 3,
+      title: "TAPE C – OAK FRAME HOUSE",
+      description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
+      price: 288.98
+    }
+  ];
+
+  const services = [
+    {
+      id: 1,
+      name: "Service 1",
+      description: "Detailed architectural consultation.",
+      price: 99.99
+    },
+    {
+      id: 2,
+      name: "Service 2",
+      description: "Personalized interior design service.",
+      price: 149.99
+    },
+    {
+      id: 3,
+      name: "Service 3",
+      description: "Landscape design package.",
+      price: 199.99
+    }
   ];
 
   useEffect(() => {
-    AOS.init({ duration: 1000 }); // Initialize AOS with duration 1000ms
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      if (currentUser) {
-        setUser(currentUser);
-      } else {
-        navigate('/login');
-      }
-    });
-
-    return () => unsubscribe();
-  }, [navigate]);
+    AOS.init({ duration: 1000 });
+    const loggedInUser = localStorage.getItem('user');
+    const storedProjects = localStorage.getItem('selectedProjects');
+    const storedServices = localStorage.getItem('selectedServices');
+    if (loggedInUser) {
+      setUser(JSON.parse(loggedInUser));
+    }
+    if (storedProjects) {
+      setSelectedProjects(JSON.parse(storedProjects));
+    }
+    if (storedServices) {
+      setSelectedServices(JSON.parse(storedServices));
+    }
+  }, []);
 
   const handleProjectSelect = (project) => {
-    setSelectedProject(project);
+    const updatedProjects = [...selectedProjects, project];
+    setSelectedProjects(updatedProjects);
+    localStorage.setItem('selectedProjects', JSON.stringify(updatedProjects));
+  };
+
+  const handleServiceSelect = (service) => {
+    const updatedServices = [...selectedServices, service];
+    setSelectedServices(updatedServices);
+    localStorage.setItem('selectedServices', JSON.stringify(updatedServices));
+  };
+
+  const handleProjectRemove = (projectId) => {
+    const updatedProjects = selectedProjects.filter(project => project.id !== projectId);
+    setSelectedProjects(updatedProjects);
+    localStorage.setItem('selectedProjects', JSON.stringify(updatedProjects));
+  };
+
+  const handleServiceRemove = (serviceId) => {
+    const updatedServices = selectedServices.filter(service => service.id !== serviceId);
+    setSelectedServices(updatedServices);
+    localStorage.setItem('selectedServices', JSON.stringify(updatedServices));
+  };
+
+  const handleOptionSelect = (option) => {
+    setSelectedOption(option);
+  };
+
+  const handleGoToCart = () => {
+    navigate('/cart');
   };
 
   return (
     <section className="py-8 bg-white md:py-16 dark:bg-gray-900 antialiased" data-aos="fade-right">
-      <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0">
-        <div className="lg:grid lg:grid-cols-2 lg:gap-8 xl:gap-16">
-          <div className="shrink-0 max-w-md lg:max-w-lg mx-auto">
-            <img className="w-full dark:hidden" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front.svg" alt="" />
-            <img className="w-full hidden dark:block" src="https://flowbite.s3.amazonaws.com/blocks/e-commerce/imac-front-dark.svg" alt="" />
-          </div>
-
-          <div className="mt-6 sm:mt-8 lg:mt-0">
-            <h1 className="text-xl font-semibold text-gray-900 sm:text-2xl dark:text-white">
-              Apple iMac 24" All-In-One Computer, Apple M1, 8GB RAM, 256GB SSD, Mac OS, Pink
-            </h1>
-            <div className="mt-4 sm:items-center sm:gap-4 sm:flex">
-              <p className="text-2xl font-extrabold text-gray-900 sm:text-3xl dark:text-white">
-                $1,249.99
-              </p>
-
-              <div className="flex items-center gap-2 mt-2 sm:mt-0">
-                <div className="flex items-center gap-1">
-                  {[...Array(5)].map((_, index) => (
-                    <svg
-                      key={index}
-                      className="w-4 h-4 text-yellow-300"
-                      aria-hidden="true"
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="24"
-                      height="24"
-                      fill="currentColor"
-                      viewBox="0 0 24 24"
+      <div className="max-w-screen-xl px-4 mx-auto 2xl:px-0 flex">
+        <div className="w-1/4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow">
+          <ul className="space-y-4">
+            <li className={`cursor-pointer text-lg font-medium ${selectedOption === 'projects' ? 'text-blue-600' : 'text-gray-700 dark:text-gray-300'}`} onClick={() => handleOptionSelect('projects')}>My Projects</li>
+            <li className={`cursor-pointer text-lg font-medium ${selectedOption === 'services' ? 'text-blue-600' : 'text-gray-700 dark:text-gray-300'}`} onClick={() => handleOptionSelect('services')}>My Services</li>
+            <li className={`cursor-pointer text-lg font-medium ${selectedOption === 'files' ? 'text-blue-600' : 'text-gray-700 dark:text-gray-300'}`} onClick={() => handleOptionSelect('files')}>My Files</li>
+          </ul>
+        </div>
+        <div className="w-3/4 p-4 bg-blue-100 dark:bg-blue-800 rounded-lg shadow ml-4">
+          {user && (
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-semibold text-blue-900 dark:text-blue-200">
+                Welcome, {user.email}
+              </h3>
+            </div>
+          )}
+          {selectedOption === 'projects' && (
+            <div>
+              <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-4">Available Projects:</h4>
+              <ul className="divide-y divide-gray-200">
+                {projects.map((project) => (
+                  <li
+                    key={project.id}
+                    className="py-4 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
+                    onClick={() => handleProjectSelect(project)}
+                  >
+                    <h5 className="text-lg font-bold text-gray-700 dark:text-gray-300">{project.title}</h5>
+                    <p className="text-gray-900 dark:text-gray-200">{project.description}</p>
+                    <p className="text-lg font-bold text-gray-900 dark:text-gray-200">£{project.price.toFixed(2)}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {selectedOption === 'services' && (            <div>
+              <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-4">Available Services:</h4>
+              <ul className="divide-y divide-gray-200">
+                {services.map((service) => (
+                  <li
+                    key={service.id}
+                    className="py-4 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
+                    onClick={() => handleServiceSelect(service)}
+                  >
+                    <h5 className="text-lg font-bold text-gray-700 dark:text-gray-300">{service.name}</h5>
+                    <p className="text-gray-900 dark:text-gray-200">{service.description}</p>
+                    <p className="text-lg font-bold text-gray-900 dark:text-gray-200">${service.price.toFixed(2)}</p>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+          {selectedOption === 'files' && (
+            <div>
+              <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-4">Purchased Files and Services:</h4>
+              <ul className="divide-y divide-gray-200">
+                <li className="py-4 text-lg text-gray-700 dark:text-gray-300">File 1 - Download Link</li>
+                <li className="py-4 text-lg text-gray-700 dark:text-gray-300">Service 1 - Access Link</li>
+              </ul>
+            </div>
+          )}
+          <div className="mt-10">
+            <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-4">My Cart:</h4>
+            <ul className="divide-y divide-gray-200">
+              {selectedProjects.length > 0 ? (
+                selectedProjects.map((project, index) => (
+                  <li key={index} className="py-4 flex justify-between items-center">
+                    <div>
+                      <h5 className="text-lg font-bold text-gray-700 dark:text-gray-300">{project.title}</h5>
+                      <p className="text-gray-900 dark:text-gray-200">{project.description}</p>
+                      <p className="text-lg font-bold text-gray-900 dark:text-gray-200">£{project.price.toFixed(2)}</p>
+                    </div>
+                    <button
+                      className="ml-4 px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800 transition-all duration-300"
+                      onClick={() => handleProjectRemove(project.id)}
                     >
-                      <path
-                        d="M13.849 4.22c-.684-1.626-3.014-1.626-3.698 0L8.397 8.387l-4.552.361c-1.775.14-2.495 2.331-1.142 3.477l3.468 2.937-1.06 4.392c-.413 1.713 1.472 3.067 2.992 2.149L12 19.35l3.897 2.354c1.52.918 3.405-.436 2.992-2.15l-1.06-4.39 3.468-2.938c1.353-1.146.633-3.336-1.142-3.477l-4.552-.36-1.754-4.17Z"
-                      />
-                    </svg>
-                  ))}
-                </div>
-                <p className="text-sm font-medium leading-none text-gray-500 dark:text-gray-400">
-                  (5.0)
-                </p>
-                <a
-                  href="/reviews"
-                  className="text-sm font-medium leading-none text-gray-900 underline hover:no-underline dark:text-white"
-                >
-                  345 Reviews
-                </a>
-              </div>
-            </div>
-
-            <div className="mt-6 sm:gap-4 sm:items-center sm:flex sm:mt-8">
-              <a
-                href="/favorites"
-                title=""
-                className="flex items-center justify-center py-2.5 px-5 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-primary-700 focus:z-10 focus:ring-4 focus:ring-gray-100 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"
-                role="button"
-              >
-                <svg
-                  className="w-5 h-5 -ms-2 me-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M12.01 6.001C6.5 1 1 8 5.782 13.001L12.011 20l6.23-7C23 8 17.5 1 12.01 6.002Z"
-                  />
-                </svg>
-                Add to favorites
-              </a>
-
-              <a
-                href="/cart"
-                title=""
-                className="text-white mt-4 sm:mt-0 bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 dark:bg-primary-600 dark:hover:bg-primary-700 focus:outline-none dark:focus:ring-primary-800 flex items-center justify-center"
-                role="button"
-              >
-                <svg
-                  className="w-5 h-5 -ms-2 me-2"
-                  aria-hidden="true"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    stroke="currentColor"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 4h1.5L8 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm.75-3H7.5M11 7H6.312M17 4v6m-3-3h6"
-                  />
-                </svg>
-                Add to cart
-              </a>
-            </div>
-
-            <hr className="my-6 md:my-8 border-gray-200 dark:border-gray-800" />
-
-            <p className="mb-6 text-gray-500 dark:text-gray-400">
-              Studio quality three mic array for crystal clear calls and voice recordings. Six-speaker sound system for a remarkably robust and high-quality audio experience. Up to 256GB of ultrafast SSD storage.
-            </p>
-
-            <p className="text-gray-500 dark:text-gray-400">
-              Two Thunderbolt USB 4 ports and up to two USB 3 ports. Ultrafast Wi-Fi 6 and Bluetooth 5.0 wireless. Color matched Magic Mouse with Magic Keyboard or Magic Keyboard with Touch ID.
-            </p>
+                      Remove
+                    </button>
+                  </li>
+                ))
+              ) : (
+                <p className="text-gray-700 dark:text-gray-300">No items in the cart.</p>
+              )}
+              {selectedServices.length > 0 && selectedServices.map((service, index) => (
+                <li key={index} className="py-4 flex justify-between items-center">
+                  <div>
+                    <h5 className="text-lg font-bold text-gray-700 dark:text-gray-300">{service.name}</h5>
+                    <p className="text-gray-900 dark:text-gray-200">{service.description}</p>
+                    <p className="text-lg font-bold text-gray-900 dark:text-gray-200">${service.price.toFixed(2)}</p>
+                  </div>
+                  <button
+                    className="ml-4 px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800 transition-all duration-300"
+                    onClick={() => handleServiceRemove(service.id)}
+                  >
+                    Remove
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="flex justify-center mt-10">
+            <button
+              onClick={handleGoToCart}
+              className="px-6 py-3 text-lg font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-4 focus:ring-blue-300 dark:focus:ring-blue-800 transition-all duration-300"
+            >
+              Go to Cart
+            </button>
           </div>
         </div>
-
-        {user && (
-          <div className="mt-6 p-4 bg-blue-100 dark:bg-blue-800 rounded-lg shadow">
-            <h3 className="text-lg font-medium text-blue-900 dark:text-blue-200">
-              Welcome, {user.email}
-            </h3>
-            <p className="text-blue-700 dark:text-blue-300">
-              Here are your purchased projects:
-            </p>
-          </div>
-        )}
-
-        <ul className="mt-6 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {userPurchases.map((purchase) => (
-            <li key={purchase.id} className="col-span-1 bg-white rounded-lg shadow divide-y divide-gray-200">
-              <div className="w-full flex items-center justify-between p-6 space-x-6">
-                <div className="flex-1 truncate">
-                  <h3 className="text-lg font-medium text-gray-900 dark:text-white">
-                    {purchase.name}
-                  </h3>
-                  <p className="text-gray-700 dark:text-gray-300">
-                    {purchase.description}
-                  </p>
-                  <p className="text-gray-900 dark:text-gray-200 font-bold">
-                    ${purchase.price}
-                  </p>
-                  <button
-                    onClick={() => handleProjectSelect(purchase)}
-                    className="mt-2 px-4 py-2 text-sm font-medium text-white bg-primary-700 rounded-lg hover:bg-primary-800 focus:outline-none focus:ring-4 focus:ring-primary-300 dark:focus:ring-primary-800"
-                  >
-                    Select Project
-                  </button>
-                </div>
-              </div>
-            </li>
-          ))}
-        </ul>
-
-        {selectedProject && (
-          <div className="mt-6 p-4 bg-green-100 dark:bg-green-800 rounded-lg shadow">
-            <h3 className="text-lg font-medium text-green-900 dark:text-green-200">
-              Selected Project
-            </h3>
-            <p className="text-green-700 dark:text-green-300">
-              {selectedProject.name}
-            </p>
-            <p className="text-green-900 dark:text-green-200 font-bold">
-              ${selectedProject.price}
-            </p>
-          </div>
-        )}
       </div>
     </section>
   );
 };
 
 export default UserPanel;
+
+           

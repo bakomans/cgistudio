@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
@@ -11,9 +11,9 @@ import img5 from '../Assets/projects/projekt1/REAR ELEVATION.png';
 import img6 from '../Assets/projects/projekt1/RIGHT ELEVATION.png';
 
 const ProjectGallery = () => {
-  const { id } = useParams();
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [selectedImage, setSelectedImage] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     AOS.init({ duration: 1000 });
@@ -43,6 +43,10 @@ const ProjectGallery = () => {
     setSelectedImage(null);
   };
 
+  const handleBuyNow = () => {
+    navigate('/login');
+  };
+
   return (
     <section className="bg-gray-100 dark:bg-gray-800 py-16">
       <div className="container mx-auto">
@@ -62,11 +66,9 @@ const ProjectGallery = () => {
           ))}
         </div>
         <div className="flex justify-center mt-10">
-          <Link to="/login">
-            <button className="bg-purple-500 hover:bg-purple-600 text-white py-3 px-8 rounded-md text-lg">
-              Buy Now
-            </button>
-          </Link>
+          <button onClick={handleBuyNow} className="bg-purple-500 hover:bg-purple-600 text-white py-3 px-8 rounded-md text-lg">
+            Buy Now
+          </button>
         </div>
       </div>
       <Modal 
@@ -81,10 +83,7 @@ const ProjectGallery = () => {
           <div className="bg-white p-4 rounded-md max-w-4xl mx-auto w-11/12 h-5/6 flex flex-col items-center">
             <img src={selectedImage.src} alt="Selected" className="object-contain h-full w-full" data-aos="fade-in" />
             <p className="mt-4 text-gray-700 dark:text-gray-300">{selectedImage.caption}</p>
-            <button 
-              onClick={closeModal} 
-              className="mt-4 bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-md"
-            >
+            <button onClick={closeModal} className="mt-4 bg-indigo-500 hover:bg-indigo-600 text-white py-2 px-4 rounded-md">
               Close
             </button>
           </div>
