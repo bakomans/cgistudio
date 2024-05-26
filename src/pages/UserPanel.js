@@ -3,54 +3,40 @@ import { useNavigate } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 
+// Import zdjęć miniatur
+import miniatura1 from '../Assets/homepage/dom1/A.png';
+import miniatura2 from '../Assets/homepage/dom1/C.png';
+import miniatura3 from '../Assets/homepage/dom3/A.png';
+
 const UserPanel = () => {
   const [user, setUser] = useState(null);
   const [selectedProjects, setSelectedProjects] = useState([]);
-  const [selectedServices, setSelectedServices] = useState([]);
   const [selectedOption, setSelectedOption] = useState('projects');
-  const [totalPrice, setTotalPrice] = useState(0); // Nowy stan do przechowywania całkowitej ceny
+  const [totalPrice, setTotalPrice] = useState(0);
   const navigate = useNavigate();
 
-  // Tablice projektów i usług
+  // Tablice projektów
   const projects = [
     {
       id: 1,
-      title: "TAPE A – OAK FRAME HOUSE",
+      title: "TAPE A – VIRION HOUSE",
       description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
-      price: 288.98
+      price: 288.98,
+      image: miniatura1
     },
     {
       id: 2,
-      title: "TAPE B – OAK FRAME HOUSE",
+      title: "TAPE B – EAGLE HOUSE",
       description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
-      price: 288.98
+      price: 288.98,
+      image: miniatura2
     },
     {
       id: 3,
-      title: "TAPE C – OAK FRAME HOUSE",
-      description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
-      price: 288.98
-    }
-  ];
-
-  const services = [
-    {
-      id: 1,
-      name: "Service 1",
-      description: "Detailed architectural consultation.",
-      price: 99.99
-    },
-    {
-      id: 2,
-      name: "Service 2",
-      description: "Personalized interior design service.",
-      price: 149.99
-    },
-    {
-      id: 3,
-      name: "Service 3",
-      description: "Landscape design package.",
-      price: 199.99
+      title: "TAPE C – DORIAN HOUSE",
+      description: "Welcome to explore this charming home featuring a spacious living room, kitchen with dining area, and a cozy fireplace, perfect for enjoyable evenings. Upstairs, you'll find two cozy bedrooms and a modern family bathroom. All this is available at an incredibly attractive price - just 188.98 pounds! Why not invest in the comfort and convenience of your new home today",
+      price: 188.98,
+      image: miniatura3
     }
   ];
 
@@ -58,48 +44,31 @@ const UserPanel = () => {
     AOS.init({ duration: 1000 });
     const loggedInUser = localStorage.getItem('user');
     const storedProjects = localStorage.getItem('selectedProjects');
-    const storedServices = localStorage.getItem('selectedServices');
     if (loggedInUser) {
       setUser(JSON.parse(loggedInUser));
     }
     if (storedProjects) {
       setSelectedProjects(JSON.parse(storedProjects));
     }
-    if (storedServices) {
-      setSelectedServices(JSON.parse(storedServices));
-    }
   }, []);
 
   useEffect(() => {
-    // Obliczanie całkowitej ceny po każdej zmianie w wybranych projektach i usługach
+    // Obliczanie całkowitej ceny po każdej zmianie w wybranych projektach
     const projectTotal = selectedProjects.reduce((total, project) => total + project.price, 0);
-    const serviceTotal = selectedServices.reduce((total, service) => total + service.price, 0);
-    setTotalPrice(projectTotal + serviceTotal);
-  }, [selectedProjects, selectedServices]);
+    setTotalPrice(projectTotal);
+  }, [selectedProjects]);
 
-  // Funkcje do obsługi wyboru i usuwania projektów/usług
+  // Funkcje do obsługi wyboru i usuwania projektów
   const handleProjectSelect = (project) => {
     const updatedProjects = [...selectedProjects, project];
     setSelectedProjects(updatedProjects);
     localStorage.setItem('selectedProjects', JSON.stringify(updatedProjects));
   };
 
-  const handleServiceSelect = (service) => {
-    const updatedServices = [...selectedServices, service];
-    setSelectedServices(updatedServices);
-    localStorage.setItem('selectedServices', JSON.stringify(updatedServices));
-  };
-
   const handleProjectRemove = (projectId) => {
     const updatedProjects = selectedProjects.filter(project => project.id !== projectId);
     setSelectedProjects(updatedProjects);
     localStorage.setItem('selectedProjects', JSON.stringify(updatedProjects));
-  };
-
-  const handleServiceRemove = (serviceId) => {
-    const updatedServices = selectedServices.filter(service => service.id !== serviceId);
-    setSelectedServices(updatedServices);
-    localStorage.setItem('selectedServices', JSON.stringify(updatedServices));
   };
 
   const handleOptionSelect = (option) => {
@@ -116,11 +85,9 @@ const UserPanel = () => {
         <div className="w-1/4 p-4 bg-gray-100 dark:bg-gray-800 rounded-lg shadow">
           <ul className="space-y-4">
             <li className={`cursor-pointer text-lg font-medium ${selectedOption === 'projects' ? 'text-blue-600' : 'text-gray-700 dark:text-gray-300'}`} onClick={() => handleOptionSelect('projects')}>My Projects</li>
-            <li className={`cursor-pointer text-lg font-medium ${selectedOption === 'services' ? 'text-blue-600' : 'text-gray-700 dark:text-gray-300'}`} onClick={() => handleOptionSelect('services')}>My Services</li>
-            <li className={`cursor-pointer text-lg font-medium ${selectedOption === 'files' ? 'text-blue-600' : 'text-gray-700 dark:text-gray-300'}`} onClick={() => handleOptionSelect('files')}>My Files</li>
           </ul>
         </div>
-        <div className="w-3/4 p-4 bg-blue-100 dark:bg-blue-800 rounded-lg shadow ml-4">
+        <div className="w-3/4 p-4 bg-white dark:bg-gray-900 rounded-lg shadow ml-4">
           {user && (
             <div className="text-center mb-6">
               <h3 className="text-2xl font-semibold text-blue-900 dark:text-blue-200">
@@ -138,38 +105,16 @@ const UserPanel = () => {
                     className="py-4 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
                     onClick={() => handleProjectSelect(project)}
                   >
-                    <h5 className="text-lg font-bold text-gray-700 dark:text-gray-300">{project.title}</h5>
-                    <p className="text-gray-900 dark:text-gray-200">{project.description}</p>
-                    <p className="text-lg font-bold text-gray-900 dark:text-gray-200">£{project.price.toFixed(2)}</p>
+                    <div className="flex items-center">
+                      <img src={project.image} alt={project.title} className="w-32 h-32 mr-4 object-cover rounded-lg" />
+                      <div>
+                        <h5 className="text-lg font-bold text-gray-700 dark:text-gray-300">{project.title}</h5>
+                        <p className="text-gray-900 dark:text-gray-200">{project.description}</p>
+                        <p className="text-lg font-bold text-gray-900 dark:text-gray-200">£{project.price.toFixed(2)}</p>
+                      </div>
+                    </div>
                   </li>
                 ))}
-              </ul>
-            </div>
-          )}
-          {selectedOption === 'services' && (
-            <div>
-              <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-4">Available Services:</h4>
-              <ul className="divide-y divide-gray-200">
-                {services.map((service) => (
-                  <li
-                    key={service.id}
-                    className="py-4 cursor-pointer hover:bg-gray-200 dark:hover:bg-gray-600 transition-all duration-300"
-                    onClick={() => handleServiceSelect(service)}
-                  >
-                    <h5 className="text-lg font-bold text-gray-700 dark:text-gray-300">{service.name}</h5>
-                    <p className="text-gray-900 dark:text-gray-200">{service.description}</p>
-                    <p className="text-lg font-bold text-gray-900 dark:text-gray-200">${service.price.toFixed(2)}</p>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
-          {selectedOption === 'files' && (
-            <div>
-              <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-4">Purchased Files and Services:</h4>
-              <ul className="divide-y divide-gray-200">
-                <li className="py-4 text-lg text-gray-700 dark:text-gray-300">File 1 - Download Link</li>
-                <li className="py-4 text-lg text-gray-700 dark:text-gray-300">Service 1 - Access Link</li>
               </ul>
             </div>
           )}
@@ -179,10 +124,13 @@ const UserPanel = () => {
               {selectedProjects.length > 0 ? (
                 selectedProjects.map((project, index) => (
                   <li key={index} className="py-4 flex justify-between items-center">
-                    <div>
-                      <h5 className="text-lg font-bold text-gray-700 dark:text-gray-300">{project.title}</h5>
-                      <p className="text-gray-900 dark:text-gray-200">{project.description}</p>
-                      <p className="text-lg font-bold text-gray-900 dark:text-gray-200">£{project.price.toFixed(2)}</p>
+                    <div className="flex items-center">
+                      <img src={project.image} alt={project.title} className="w-32 h-32 mr-4 object-cover rounded-lg" />
+                      <div>
+                        <h5 className="text-lg font-bold text-gray-700 dark:text-gray-300">{project.title}</h5>
+                        <p className="text-gray-900 dark:text-gray-200">{project.description}</p>
+                        <p className="text-lg font-bold text-gray-900 dark:text-gray-200">£{project.price.toFixed(2)}</p>
+                      </div>
                     </div>
                     <button
                       className="ml-4 px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800 transition-all duration-300"
@@ -195,21 +143,6 @@ const UserPanel = () => {
               ) : (
                 <p className="text-gray-700 dark:text-gray-300">No items in the cart.</p>
               )}
-              {selectedServices.length > 0 && selectedServices.map((service, index) => (
-                <li key={index} className="py-4 flex justify-between items-center">
-                  <div>
-                    <h5 className="text-lg font-bold text-gray-700 dark:text-gray-300">{service.name}</h5>
-                    <p className="text-gray-900 dark:text-gray-200">{service.description}</p>
-                    <p className="text-lg font-bold text-gray-900 dark:text-gray-200">${service.price.toFixed(2)}</p>
-                  </div>
-                  <button
-                    className="ml-4 px-4 py-2 text-sm font-medium text-white bg-red-600 rounded-lg hover:bg-red-700 focus:outline-none focus:ring-4 focus:ring-red-300 dark:focus:ring-red-800 transition-all duration-300"
-                    onClick={() => handleServiceRemove(service.id)}
-                  >
-                    Remove
-                  </button>
-                </li>
-              ))}
             </ul>
           </div>
           <div className="flex justify-center mt-10">
@@ -230,4 +163,3 @@ const UserPanel = () => {
 };
 
 export default UserPanel;
-

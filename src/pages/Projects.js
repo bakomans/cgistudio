@@ -41,12 +41,12 @@ const Projects = () => {
         { src: img6, caption: "Right Elevation" }
       ]
     },
-    {
-      id: 2,
-      title: "Cozy Cottage",
-      description: "A cozy cottage with a rustic charm and modern amenities.",
-      images: ["https://via.placeholder.com/500x300"]
-    },
+    // {
+    //   id: 2,
+    //   title: "Cozy Cottage",
+    //   description: "A cozy cottage with a rustic charm and modern amenities.",
+    //   images: ["https://via.placeholder.com/500x300"]
+    // },
     {
       id: 3,
       title: "TYPE C - DORIAN",

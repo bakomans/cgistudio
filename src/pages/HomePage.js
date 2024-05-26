@@ -37,7 +37,7 @@ const HomePage = () => {
             </button>
           </div>
         </div>
-        <div className="hidden lg:mt-0 lg:col-span-5 lg:flex flex-col items-center" data-aos="fade-left">
+        <div className="hidden lg:mt-7 lg:col-span-5 lg:flex flex-col items-center" data-aos="fade-left">
           <video className="w-full rounded-lg shadow-md" autoPlay muted loop>
             <source src={video} type="video/mp4" />
             Your browser does not support the video tag.
@@ -69,7 +69,7 @@ const HomePage = () => {
               <p className="text-gray-700 dark:text-gray-300 mb-4">Tomev Timber Frames are trusted builders nationwide. Their attention to detail is second to none, ensuring that every job is thoroughly planned and inspected at every point to meet your specifications.</p>
               <p className="text-gray-700 dark:text-gray-300 mb-4">They work nationwide, providing support all around the UK. If you're looking for high-quality timber frames and reliable service, Tomev Timber Frames is your go-to choice.</p>
               <p className="text-gray-700 dark:text-gray-300 mb-4">For more information, visit their website: <a href="https://www.tomevltd.co.uk" className="text-indigo-500 hover:underline">Tomev Timber Frames</a></p>
-              <p className="text-gray-700 dark:text-gray-300 mb-4">Telefon: 07503 557871</p>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">Phone Number: 07503 557871</p>
               <p className="text-gray-700 dark:text-gray-300 mb-4">"CGI Studio and Tomev Timber Frames are trusted builders nationwide, renowned for their meticulous attention to detail and unwavering dedication to every project. Rest assured that each job is meticulously planned and inspected at every stage to ensure it meets your specifications. Whether you're seeking innovative architectural designs or high-quality timber frames, our teams are here to support you throughout the UK. With CGI Studio and Tomev Timber Frames, you can count on exceptional craftsmanship and comprehensive service tailored to your needs. Let's collaborate to bring your vision to life."</p>
             </div>
           </div>
