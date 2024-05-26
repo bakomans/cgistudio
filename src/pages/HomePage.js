@@ -55,21 +55,37 @@ const HomePage = () => {
           { src: dom7, alt: "dom7" },
           { src: dom8, alt: "dom8" }
         ].map((image, index) => (
-        <div key={index} className="relative overflow-hidden rounded-lg shadow-md" data-aos="fade-up">
-        <img className="w-full h-72 object-cover" src={image.src} alt={image.alt} />
-        <p className="absolute bottom-0 left-0 right-0 p-4 text-gray-700 dark:text-gray-300">Short description here</p>
-        </div>
+          <div key={index} className="relative overflow-hidden rounded-lg shadow-md" data-aos={`fade-${index % 2 === 0 ? 'up' : 'down'}`}>
+            <img className="w-auto h-60 object-cover" src={image.src} alt={image.alt} />
+          </div>
         ))}
-        </div>
-        <Comments />
-        <footer className="bg-gray-800 text-gray-200 py-4 text-center">
+      </div>
+      <section className="bg-gray-100 dark:bg-gray-800 py-8">
         <div className="container mx-auto">
-        <p>© {new Date().getFullYear()} CGI Studio. All rights reserved.</p>
-        <a href="https://facebook.com" className="text-indigo-500 hover:text-indigo-700 mx-2">Facebook</a>
+          <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-gray-200 mb-4" data-aos="fade-up">Our Partner</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md" data-aos="fade-up">
+              <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-300 mb-4">Tomev Timber Frames</h3>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">Tomev Timber Frames are trusted builders nationwide. Their attention to detail is second to none, ensuring that every job is thoroughly planned and inspected at every point to meet your specifications.</p>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">They work nationwide, providing support all around the UK. If you're looking for high-quality timber frames and reliable service, Tomev Timber Frames is your go-to choice.</p>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">For more information, visit their website: <a href="https://www.tomevltd.co.uk" className="text-indigo-500 hover:underline">Tomev Timber Frames</a></p>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">Telefon: 07503 557871</p>
+              <p className="text-gray-700 dark:text-gray-300 mb-4">"Tomev Timber Frames are trusted builders nationwide, our attention to detail is second to none, you can rest assure that every job is thoroughly planned, and inspected at every point to ensure it’s the build you requested. We work Nationwide, so can provide support all around the UK. Our attention to detail is second to none, you can rest assure that every job is thoroughly planned, and inspected at every point to ensure it’s the build you requested. We work Nationwide, so can provide support all around the UK."</p>
+            </div>
+          </div>
         </div>
-        </footer>
-        </section>
-        );
-        };
-        
-        export default HomePage;
+      </section>
+      <Comments />
+      <footer className="bg-gray-800 text-gray-200 py-4 text-center">
+        <div className="container mx-auto">
+          <p>© {new Date().getFullYear()} CGI Studio. All rights reserved.</p>
+          <a href="https://facebook.com" className="text-indigo-500 hover:text-indigo-700 mx-2">Facebook</a>
+        </div>
+      </footer>
+    </section>
+  );
+};
+
+export default HomePage;
+
+
