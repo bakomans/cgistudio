@@ -59,6 +59,7 @@ const Navbar = () => {
         <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
           <NavLink to="/" style={linkStyle} activeStyle={activeLinkStyle} exact>Home</NavLink>
           <NavLink to="/projects" style={linkStyle} activeStyle={activeLinkStyle}>Projects</NavLink>
+          <NavLink to="/gallery" style={linkStyle} activeStyle={activeLinkStyle}>Gallery</NavLink>
           {user ? (
             <>
               <NavLink to="/user-panel" style={linkStyle} activeStyle={activeLinkStyle}>User Panel</NavLink>

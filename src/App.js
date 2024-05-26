@@ -8,6 +8,7 @@ import CheckoutPage from './pages/CheckoutPage';
 import HomePage from './pages/HomePage';
 import Projects from './pages/Projects'; // Import dla komponentu Projects
 import ProjectGallery from './pages/ProjectGallery'; // Import dla komponentu ProjectGallery
+import Gallery from './pages/Gallery';
 
 const App = () => {
   return (
@@ -18,9 +19,11 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/user-panel" element={<UserPanel />} />
-        <Route path="/checkout" element={<CheckoutPage />} />
+        <Route path="/CheckoutPage" element={<CheckoutPage />} />
         <Route path="/projects" element={<Projects />} /> {/* Ścieżka dla komponentu Projects */}
-        <Route path="/projects/:id" element={<ProjectGallery />} /> {/* Ścieżka dla komponentu ProjectGallery */}
+        <Route path="/projects/:id" element={<ProjectGallery />} /> {/* Ścieżka dla komponentu ProjectGallery 
+        */}
+        <Route path="/gallery" element={<Gallery />} />
       </Routes>
     </Router>
   );

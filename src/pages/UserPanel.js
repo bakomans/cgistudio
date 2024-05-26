@@ -8,8 +8,10 @@ const UserPanel = () => {
   const [selectedProjects, setSelectedProjects] = useState([]);
   const [selectedServices, setSelectedServices] = useState([]);
   const [selectedOption, setSelectedOption] = useState('projects');
+  const [totalPrice, setTotalPrice] = useState(0); // Nowy stan do przechowywania całkowitej ceny
   const navigate = useNavigate();
 
+  // Tablice projektów i usług
   const projects = [
     {
       id: 1,
@@ -68,6 +70,14 @@ const UserPanel = () => {
     }
   }, []);
 
+  useEffect(() => {
+    // Obliczanie całkowitej ceny po każdej zmianie w wybranych projektach i usługach
+    const projectTotal = selectedProjects.reduce((total, project) => total + project.price, 0);
+    const serviceTotal = selectedServices.reduce((total, service) => total + service.price, 0);
+    setTotalPrice(projectTotal + serviceTotal);
+  }, [selectedProjects, selectedServices]);
+
+  // Funkcje do obsługi wyboru i usuwania projektów/usług
   const handleProjectSelect = (project) => {
     const updatedProjects = [...selectedProjects, project];
     setSelectedProjects(updatedProjects);
@@ -136,7 +146,8 @@ const UserPanel = () => {
               </ul>
             </div>
           )}
-          {selectedOption === 'services' && (            <div>
+          {selectedOption === 'services' && (
+            <div>
               <h4 className="text-xl font-medium text-gray-900 dark:text-white mb-4">Available Services:</h4>
               <ul className="divide-y divide-gray-200">
                 {services.map((service) => (
@@ -209,6 +220,9 @@ const UserPanel = () => {
               Go to Cart
             </button>
           </div>
+          <div className="text-center mt-6">
+            <p className="text-xl font-bold text-gray-900 dark:text-gray-200">Total Price: £{totalPrice.toFixed(2)}</p>
+          </div>
         </div>
       </div>
     </section>
@@ -217,4 +231,3 @@ const UserPanel = () => {
 
 export default UserPanel;
 
-           
