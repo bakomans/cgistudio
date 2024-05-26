@@ -30,7 +30,7 @@ const Projects = () => {
   const projects = [
     {
       id: 1,
-      title: "Type A - OAK FRAME HOUSE",
+      title: "Type A - VIRION HOUSE",
       description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
       images: [
         { src: img1, caption: "Front Elevation" },
@@ -43,7 +43,7 @@ const Projects = () => {
     },
     // {
     //   id: 2,
-    //   title: "Cozy Cottage",
+    //   title: "EAGLE HOUSE",
     //   description: "A cozy cottage with a rustic charm and modern amenities.",
     //   images: ["https://via.placeholder.com/500x300"]
     // },
