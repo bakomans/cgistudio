@@ -59,6 +59,7 @@ const Gallery = () => {
               />
               <p className="text-center text-gray-700 dark:text-gray-300">{image.caption}</p>
             </div>
+            // eslint-disable-next-line react/no-array-index-key
           ))}
         </div>
         <Modal 
