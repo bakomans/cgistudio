@@ -5,10 +5,14 @@ import 'aos/dist/aos.css';
 import video from '../Assets/video barbara.mp4'; // Importujemy film
 import Comments from './comments'; // Importujemy komponent komentarzy
 import logo from '../Assets/logo.png';
-import dom1 from '../Assets/homepage/dom1/dom1.jpg'; // Importujemy obrazy
-import dom2 from '../Assets/homepage/dom1/dom2.png';
-import dom3 from '../Assets/homepage/dom1/dom3.png';
-import dom4 from '../Assets/homepage/dom1/dom4.png';
+import dom1 from '../Assets/homepage/dom1/A.png'; // Importujemy obrazy
+import dom2 from '../Assets/homepage/dom1/B.png';
+import dom3 from '../Assets/homepage/dom1/C.png';
+import dom4 from '../Assets/homepage/dom1/D.png';
+import dom5 from '../Assets/homepage/dom3/A.png'; // Importujemy obrazy
+import dom6 from '../Assets/homepage/dom3/B.png';
+import dom7 from '../Assets/homepage/dom3/C.png';
+import dom8 from '../Assets/homepage/dom3/D.png';
 
 const HomePage = () => {
   useEffect(() => {
@@ -58,19 +62,19 @@ const HomePage = () => {
           <p className="p-4 text-gray-700 dark:text-gray-300">Short description here</p>
         </div>
         <div className="relative overflow-hidden rounded-lg shadow-md" data-aos="fade-right">
-          <img className="w-100 h-100 object-cover" src={dom1} alt="gallery" />
+          <img className="w-100 h-100 object-cover" src={dom5} alt="gallery" />
           <p className="p-4 text-gray-700 dark:text-gray-300">Short description here</p>
         </div>
         <div className="relative overflow-hidden rounded-lg shadow-md" data-aos="fade-up">
-          <img className="w-100 h-100 object-cover" src={dom2} alt="gallery" />
+          <img className="w-100 h-100 object-cover" src={dom6} alt="gallery" />
           <p className="p-4 text-gray-700 dark:text-gray-300">Short description here</p>
         </div>
         <div className="relative overflow-hidden rounded-lg shadow-md" data-aos="fade-up">
-          <img className="w-100 h-100 object-cover" src={dom3} alt="gallery" />
+          <img className="w-100 h-100 object-cover" src={dom7} alt="gallery" />
           <p className="p-4 text-gray-700 dark:text-gray-300">Short description here</p>
         </div>
         <div className="relative overflow-hidden rounded-lg shadow-md" data-aos="fade-down">
-          <img className="w-100 h-100 object-cover" src={dom4} alt="gallery" />
+          <img className="w-100 h-100 object-cover" src={dom8} alt="gallery" />
           <p className="p-4 text-gray-700 dark:text-gray-300">Short description here</p>
         </div>
         <div className="relative overflow-hidden rounded-lg shadow-md" data-aos="fade-up">
