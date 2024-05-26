@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -127,7 +128,7 @@ const UserPanel = () => {
 <p className="text-gray-900 dark:text-gray-200">All downloaded plans are prepared as per application requirements. That includes Floor Plans and Elevation Drawings: These orthogonal (2d) drawings that illustrate the layout of the building and external appearance of the building from different angles. They show the height, shape and design details. Whole set of planning drawings is saved on A4 paper size and scale 1:100. Before downloading your drawings please ensure that your drawings will meet the required quality standards set by Local Planning Authority (LPA).</p>
 <p className="text-gray-900 dark:text-gray-200">The only thing missing to have a full set ready for application is a Site Plan showing the proposed property in scale 1:500 or 1:200 and a Location Plan in scale 1:1250. A location plan provides an overview of the site’s location within the wider area. It includes nearby roads, landmarks, and relevant features.</p>
 <p className="text-gray-900 dark:text-gray-200">You can download a CAD/DWG version of your plot from the website at the following link:</p>
-<a href="https://www.requestaplan.co.uk/?gad_source=1&gclid=Cj0KCQjwu8uyBhC6ARIsAKwBGpRQZ73imV_ouEX7syimF-poE6oBah-cAwWKAdnXCDogZFyhJxCK8YcaAvX8EALw_wcB" className="text-blue-600 cursor-pointer underline">ReQuestaPlan</a>
+<a href="https://www.requestaplan.co.uk/?gad_source=1&gclid=Cj0KCQjwu8uyBhC6ARIsAKwBGpRQZ73imV_ouEX7syimF-poE6oBah-cAwWKAdnXCDogZFyhJxCK8YcaAvX8EALw_wcB" className="text-blue-600 cursor-pointer underline" target="_blank">ReQuestaPlan</a>
 <p className="text-gray-900 dark:text-gray-200">Please use the option “Make my site plan”, and I’ll prepare your final drawing. You will need to send me the CAD/DWG version of your plot with the type of building you’ve purchased from C-GI studio, and I’ll send you back a site plan with the building positioned to the required scale and a location plate set to scale 1:1250.</p>
 <p className="text-gray-900 dark:text-gray-200">Price: £68</p>
 <div className="flex items-center mt-4">
