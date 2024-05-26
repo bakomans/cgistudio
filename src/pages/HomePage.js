@@ -63,8 +63,8 @@ const HomePage = () => {
       <section className="bg-gray-100 dark:bg-gray-800 py-8">
         <div className="container mx-auto flex flex-col items-center max-w-screen-lg">
           <h2 className="text-3xl font-bold text-center text-gray-900 dark:text-gray-200 mb-4" data-aos="fade-up">Our Partner</h2>
-          <div className="w-full grid grid-cols-1 lg:grid-cols-2 gap-8">
-            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md" data-aos="fade-up">
+          <div className="w-full flex justify-center">
+            <div className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md max-w-2xl w-full" data-aos="fade-up">
               <h3 className="text-xl font-semibold text-gray-800 dark:text-gray-300 mb-4">Tomev Timber Frames</h3>
               <p className="text-gray-700 dark:text-gray-300 mb-4">Tomev Timber Frames are trusted builders nationwide. Their attention to detail is second to none, ensuring that every job is thoroughly planned and inspected at every point to meet your specifications.</p>
               <p className="text-gray-700 dark:text-gray-300 mb-4">They work nationwide, providing support all around the UK. If you're looking for high-quality timber frames and reliable service, Tomev Timber Frames is your go-to choice.</p>
