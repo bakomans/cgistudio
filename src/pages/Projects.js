@@ -34,8 +34,8 @@ const Projects = () => {
       description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
       images: [
         { src: img1, caption: "Front Elevation" },
-        { src: img2, caption: "Large FF" },
-        { src: img3, caption: "Large GF" },
+        { src: img2, caption: "Large First Floor " },
+        { src: img3, caption: "Large Ground Floor" },
         { src: img4, caption: "Left Elevation" },
         { src: img5, caption: "Rear Elevation" },
         { src: img6, caption: "Right Elevation" }
@@ -86,10 +86,14 @@ const Projects = () => {
             <p className="text-lg text-center text-gray-700 dark:text-gray-300 mb-10">{project.description}</p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {project.images.map((image, index) => (
-                <div key={index} className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md" data-aos="fade-up">
+                <div 
+                  key={index} 
+                  className="bg-white dark:bg-gray-700 p-6 rounded-lg shadow-md" 
+                  data-aos="fade-up"
+                >
                   <img 
                     src={image.src} 
-                    alt={`${project.title} ${index + 1}`} 
+                    alt={`${project.title}                  ${index + 1}`} 
                     className="w-full h-40 object-cover mb-4 rounded-md cursor-pointer"
                     onClick={() => openModal(image)}
                   />
@@ -131,4 +135,3 @@ const Projects = () => {
 
 export default Projects;
 
-       
