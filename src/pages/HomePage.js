@@ -13,6 +13,10 @@ import dom5 from '../Assets/homepage/dom3/A.png';
 import dom6 from '../Assets/homepage/dom3/B.png';
 import dom7 from '../Assets/homepage/dom3/C.png';
 import dom8 from '../Assets/homepage/dom3/D.png';
+import dom9 from '../Assets/homepage/dom2/A.png';
+import dom10 from '../Assets/homepage/dom2/B.png';
+import dom11 from '../Assets/homepage/dom2/C.png';
+import dom12 from '../Assets/homepage/dom2/D.png';
 
 const HomePage = () => {
   useEffect(() => {
@@ -53,7 +57,11 @@ const HomePage = () => {
           { src: dom5, alt: "dom5", aos: "flip-up" },
           { src: dom6, alt: "dom6", aos: "flip-down" },
           { src: dom7, alt: "dom7", aos: "zoom-in" },
-          { src: dom8, alt: "zoom-out", aos: "zoom-out" }
+          { src: dom8, alt: "zoom-out", aos: "zoom-out" },
+          { src: dom9, alt: "dom9", aos: "fade-up" },
+          { src: dom10, alt: "dom10", aos: "fade-down" },
+          { src: dom11, alt: "dom11", aos: "fade-right" },
+          { src: dom12, alt: "dom11", aos: "fade-left" },
         ].map((image, index) => (
           <div key={index} className="relative overflow-hidden rounded-lg shadow-md" data-aos={image.aos}>
             <img className="w-auto h-60 object-cover" src={image.src} alt={image.alt} />
