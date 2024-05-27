@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import emailjs from 'emailjs-com';
 
 const CheckoutPage = () => {
   const [selectedProjects, setSelectedProjects] = useState([]);
@@ -23,22 +24,27 @@ const CheckoutPage = () => {
   }, []);
 
   const sendEmail = (projects, invoiceNumber, total) => {
-    const emailContent = `
-      From: cgi-studio
-      Order Number: ${invoiceNumber}
+    const templateParams = {
+      to_email: 'cgistudiodream@gmail.com',
+      from_name: 'CGI Studio',
+      message_html: `
+        <p>Order Number: ${invoiceNumber}</p>
+        <p>Thank you for purchasing our product. Please make a bank transfer to this account:</p>
+        <p>Account Details: [INSERT ACCOUNT DETAILS HERE]</p>
+        <p>Reference: ${invoiceNumber}</p>
+        <p>After payment is confirmed, files will be sent to you immediately.</p>
+        <p>Thank you for using CGI Studio.</p>
+      `,
+      total_price: total.toFixed(2),
+      invoice_number: invoiceNumber
+    };
 
-      Thank you for purchasing our product. Please make a bank transfer to this account:
-      Account Details: [INSERT ACCOUNT DETAILS HERE]
-      Reference: ${invoiceNumber}
-
-      After payment is confirmed, files will be sent to you immediately.
-      Thank you for using CGI-studio.
-    `;
-
-    console.log(`Email sent with invoice number: ${invoiceNumber}`);
-    console.log(`Projects: ${JSON.stringify(projects, null, 2)}`);
-    console.log(`Total Price: £${total.toFixed(2)}`);
-    console.log(`Email Content: ${emailContent}`);
+    emailjs.send('service_swzxk0c', 'template_mv6x0cv', templateParams, 'rfrqp0MItfGto9k-F')
+      .then((result) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text);
+      });
   };
 
   const handlePlaceOrder = () => {
