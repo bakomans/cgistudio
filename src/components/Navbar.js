@@ -71,6 +71,7 @@ const Navbar = () => {
               <NavLink to="/register" style={linkStyle} activeStyle={activeLinkStyle}>Registration</NavLink>
             </>
           )}
+          <NavLink to="/contact-us" style={linkStyle} activeStyle={activeLinkStyle}>Contact CGI</NavLink>
         </nav>
       </div>
     </header>

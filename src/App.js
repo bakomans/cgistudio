@@ -8,6 +8,7 @@ import CheckoutPage from './pages/CheckoutPage';
 import HomePage from './pages/HomePage';
 import Projects from './pages/Projects';
 import Gallery from './pages/Gallery';
+import ContactUs from './pages/ContactUs';
 
 const App = () => {
   return (
@@ -21,6 +22,7 @@ const App = () => {
         <Route path="/checkout" element={<CheckoutPage />} /> {/* Corrected path */}
         <Route path="/projects" element={<Projects />} />
         <Route path="/gallery" element={<Gallery />} />
+        <Route path="/contact-us" element={<ContactUs />} /> {/* Add the new route */}
       </Routes>
     </Router>
   );
