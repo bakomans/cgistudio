@@ -1,14 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import emailjs from 'emailjs-com';
+import { useAuth } from 'ścieżka/do/usługi/uwierzytelniania'; // Zaimportuj usługę uwierzytelniania z Twojej aplikacji
 
 const CheckoutPage = () => {
   const [selectedProjects, setSelectedProjects] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [invoiceNumber, setInvoiceNumber] = useState('');
   const navigate = useNavigate();
+  const { user } = useAuth(); // Uzyskaj dostęp do zalogowanego użytkownika
 
   useEffect(() => {
+    // Sprawdź, czy użytkownik jest zalogowany
+    if (!user) {
+      // Jeśli użytkownik nie jest zalogowany, przekieruj go do strony logowania
+      navigate('/login');
+      return;
+    }
+
     const storedProjects = JSON.parse(localStorage.getItem('selectedProjects')) || [];
     setSelectedProjects(storedProjects);
 
@@ -20,12 +29,15 @@ const CheckoutPage = () => {
     setInvoiceNumber(newInvoiceNumber);
     localStorage.setItem('lastInvoiceNumber', JSON.stringify(lastInvoiceNumber + 1));
 
-    sendEmail(storedProjects, newInvoiceNumber, projectTotal);
-  }, []);
+    // Sprawdź, czy użytkownik jest zalogowany, a następnie wyślij e-mail
+    if (user) {
+      sendEmail(storedProjects, newInvoiceNumber, projectTotal, user.email);
+    }
+  }, [user]);
 
-  const sendEmail = (projects, invoiceNumber, total) => {
+  const sendEmail = (projects, invoiceNumber, total, userEmail) => {
     const templateParams = {
-      to_email: 'cgistudiodream@gmail.com',
+      to_email: userEmail,
       from_name: 'CGI Studio',
       message_html: `
         <p>Order Number: ${invoiceNumber}</p>
