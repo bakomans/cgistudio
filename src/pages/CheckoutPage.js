@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import emailjs from 'emailjs-com';
-import { useAuth } from 'ścieżka/do/usługi/uwierzytelniania'; // Zaimportuj usługę uwierzytelniania z Twojej aplikacji
+import { useAuth } from '../services/auth'; // Zaimportuj usługę uwierzytelniania z Twojej aplikacji
 
 const CheckoutPage = () => {
   const [selectedProjects, setSelectedProjects] = useState([]);
@@ -11,13 +11,6 @@ const CheckoutPage = () => {
   const { user } = useAuth(); // Uzyskaj dostęp do zalogowanego użytkownika
 
   useEffect(() => {
-    // Sprawdź, czy użytkownik jest zalogowany
-    if (!user) {
-      // Jeśli użytkownik nie jest zalogowany, przekieruj go do strony logowania
-      navigate('/login');
-      return;
-    }
-
     const storedProjects = JSON.parse(localStorage.getItem('selectedProjects')) || [];
     setSelectedProjects(storedProjects);
 
