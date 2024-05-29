@@ -31,10 +31,9 @@ const HomePage = () => {
       </div>
       <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7" data-aos="fade-right">
-          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">CGI Studio is a design firm specializing in modern home designs. Our projects blend functionality, aesthetics, and innovative architectural approaches.</p>
-          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">We pay attention to every detail to create homes that meet the expectations of our clients.</p>
-          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">From simple bungalows to luxury residences - CGI Studio provides comprehensive design solutions for everyone.</p>
-          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">In times of massive inflation, I would like to introduce you to the possibility of purchasing pocket-friendly planning drawings. I have extensive experience in the architectural field designing houses, apartments, and public spaces. Dive in and choose the building that suits you best.</p>
+        <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Welcome to CGI Studio, where we specialize in modern home designs that seamlessly blend functionality, aesthetics, and innovative architecture. Our attention to detail ensures that each home we create meets and exceeds the expectations of our clients.</p>
+<p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Whether you're looking for a simple bungalow or a luxury residence, CGI Studio offers comprehensive design solutions tailored to your needs.</p>
+<p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">In these times of rising costs, we proudly offer pocket-friendly planning drawings that don't compromise on quality. With extensive experience in designing houses, apartments, and public spaces, we invite you to explore and choose the perfect building design for you. Invest in your dream home today with CGI Studio.</p>
           <div className="flex justify-center">
             <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
               <Link to="/register">Get Started</Link>

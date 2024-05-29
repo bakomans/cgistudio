@@ -17,6 +17,12 @@ import img11 from '../Assets/projects/project3/GF.png';
 import img12 from '../Assets/projects/project3/LEFT ELEV.png';
 import img13 from '../Assets/projects/project3/REAR ELEV.png';
 import img14 from '../Assets/projects/project3/RIGHT ELEV.png';
+import img15 from '../Assets/projects/project2/FF.png';
+import img16 from '../Assets/projects/project2/FRONT.png';
+import img17 from '../Assets/projects/project2/GF.png';
+import img18 from '../Assets/projects/project2/LEFT.png';
+import img19 from '../Assets/projects/project2/REAR.png';
+import img20 from '../Assets/projects/project2/RIGHT.png';
 
 const Projects = () => {
   const [modalIsOpen, setModalIsOpen] = useState(false);
@@ -33,9 +39,9 @@ const Projects = () => {
       title: "Type A - VIRION HOUSE",
       description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
       images: [
-        { src: img1, caption: "Front Elevation" },
-        { src: img2, caption: "Large First Floor " },
-        { src: img3, caption: "Large Ground Floor" },
+        { src: img1, caption: "First Floor" },
+        { src: img2, caption: "Front " },
+        { src: img3, caption: " Ground Floor" },
         { src: img4, caption: "Left Elevation" },
         { src: img5, caption: "Rear Elevation" },
         { src: img6, caption: "Right Elevation" }
@@ -43,9 +49,15 @@ const Projects = () => {
     },
     // {
     //   id: 2,
-    //   title: "EAGLE HOUSE",
-    //   description: "A cozy cottage with a rustic charm and modern amenities.",
-    //   images: ["https://via.placeholder.com/500x300"]
+    //   title: "TYPE D - EAGLE HOUSE",
+    //   description: "The ground floor features a welcoming entrance hall with utility, a spacious kitchen/diner, a comfortable living room, and two cozy bedrooms. Upstairs, you’ll find a luxurious master bedroom with a personal en-suite and a handy small store. All this for just £258.98! Invest in your dream home today.",
+    //   images: [
+    //     { src: img15, caption: "Front Elevation" },
+    //     { src: img16, caption: "Large First Floor " },
+    //     { src: img17, caption: "Large Ground Floor" },
+    //     { src: img18, caption: "Left Elevation" },
+    //     { src: img19, caption: "Rear Elevation" },
+    //     { src: img20, caption: "Right Elevation" }]
     // },
     {
       id: 3,
@@ -57,9 +69,21 @@ const Projects = () => {
         { src: img11, caption: "Ground Floor" },
         { src: img12, caption: "Left Elevation" },
         { src: img13, caption: "Rear Elevation" },
-        { src: img14, caption: "Right Elevation" }
+        { src: img14, caption: "Right Elevation" },
       ]
-    }
+    },
+    {
+      id: 2,
+      title: "TYPE D - EAGLE HOUSE",
+      description: "The ground floor features a welcoming entrance hall with utility, a spacious kitchen/diner, a comfortable living room, and two cozy bedrooms. Upstairs, you’ll find a luxurious master bedroom with a personal en-suite and a handy small store. All this for just £258.98! Invest in your dream home today.",
+      images: [
+        { src: img15, caption: "Front Elevation" },
+        { src: img16, caption: "Large First Floor " },
+        { src: img17, caption: "Large Ground Floor" },
+        { src: img18, caption: "Left Elevation" },
+        { src: img19, caption: "Rear Elevation" },
+        { src: img20, caption: "Right Elevation" }]
+    },
     // Dodaj więcej projektów tutaj
   ];
 

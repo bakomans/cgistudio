@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAuth, logout } from '../services/auth'; 
 import logo from '../Assets/logo.png'; 
@@ -14,6 +14,7 @@ const Navbar = () => {
     });
   }, []);
 
+  const [isOpen, setIsOpen] = useState(false);
   const navigate = useNavigate();
   const { user } = useAuth(); 
 
@@ -26,52 +27,49 @@ const Navbar = () => {
     }
   };
 
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
+
   const navbarStyle = {
     backgroundImage: `url(${tlo})`,
     backgroundSize: 'cover',
     backgroundPosition: 'center',
   };
 
-  const linkStyle = {
-    fontSize: '1.5rem',
-    marginRight: '1.5rem',
-    color: '#333',
-    textDecoration: 'none',
-    transition: 'color 0.3s ease',
-  };
-
-  const pinkHover = {
-    color: 'pink',
-  };
-
-  const activeLinkStyle = {
-    ...linkStyle,
-    ...pinkHover,
-  };
+  const linkStyle = "block mt-4 md:inline-block md:mt-0 md:ml-6 text-lg text-gray-900 dark:text-gray-300 hover:text-pink-500";
 
   return (
     <header className="text-gray-600 body-font" data-aos="fade-down" style={navbarStyle}>
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-        <NavLink to="/" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0" style={linkStyle} activeStyle={activeLinkStyle} exact>
+        <NavLink to="/" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
           <img src={logo} alt="logo" className="w-10 h-10 text-white m-4 bg-white-500 rounded-full" /> 
           <span className="ml-4 text-xl">CGI-STUDIO</span>
         </NavLink>
-        <nav className="md:ml-auto flex flex-wrap items-center text-base justify-center">
-          <NavLink to="/" style={linkStyle} activeStyle={activeLinkStyle} exact>Home</NavLink>
-          <NavLink to="/projects" style={linkStyle} activeStyle={activeLinkStyle}>Projects</NavLink>
-          <NavLink to="/gallery" style={linkStyle} activeStyle={activeLinkStyle}>Gallery</NavLink>
+        <button 
+          className="md:hidden text-gray-500 focus:outline-none"
+          onClick={toggleMenu}
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d={isOpen ? "M6 18L18 6M6 6l12 12" : "M4 6h16M4 12h16M4 18h16"}></path>
+          </svg>
+        </button>
+        <nav className={`md:ml-auto md:flex md:items-center md:justify-center w-full md:w-auto ${isOpen ? "block" : "hidden"} md:block text-center`}>
+          <NavLink to="/" className={linkStyle} exact>Home</NavLink>
+          <NavLink to="/projects" className={linkStyle}>Projects</NavLink>
+          <NavLink to="/gallery" className={linkStyle}>Gallery</NavLink>
           {user ? (
             <>
-              <NavLink to="/user-panel" style={linkStyle} activeStyle={activeLinkStyle}>User Panel</NavLink>
-              <button onClick={handleLogout} className="text-white px-4 bg-purple-500 rounded-md">Logout</button>
+              <NavLink to="/user-panel" className={linkStyle}>User Panel</NavLink>
+              <button onClick={handleLogout} className="block mt-4 md:inline-block md:mt-0 md:ml-6 text-lg text-white bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded-md">Logout</button>
             </>
           ) : (
             <>
-              <NavLink to="/login" style={linkStyle} activeStyle={activeLinkStyle}>Login</NavLink>
-              <NavLink to="/register" style={linkStyle} activeStyle={activeLinkStyle}>Registration</NavLink>
+              <NavLink to="/login" className={linkStyle}>Login</NavLink>
+              <NavLink to="/register" className={linkStyle}>Register</NavLink>
             </>
           )}
-          <NavLink to="/contact-us" style={linkStyle} activeStyle={activeLinkStyle}>Contact CGI</NavLink>
+          <NavLink to="/contact-us" className={linkStyle}>Contact CGI</NavLink>
         </nav>
       </div>
     </header>

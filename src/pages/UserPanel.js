@@ -4,7 +4,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 
 import miniatura1 from '../Assets/homepage/dom1/A.png';
-import miniatura2 from '../Assets/homepage/dom1/C.png';
+import miniatura2 from '../Assets/homepage/dom2/C.png';
 import miniatura3 from '../Assets/homepage/dom3/A.png';
 import makeMySitePlanImage from '../Assets/ziemia.jpg';
 
@@ -25,19 +25,18 @@ const UserPanel = () => {
       image: miniatura1
     },
     {
-      id: 2,
-      title: "TYPE B – EAGLE HOUSE",
-      description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
-      price: 288.98,
-      image: miniatura2
-    },
-    {
       id: 3,
       title: "TYPE C – DORIAN HOUSE",
       description: "Welcome to explore this charming home featuring a spacious living room, kitchen with dining area, and a cozy fireplace, perfect for enjoyable evenings. Upstairs, you'll find two cozy bedrooms and a modern family bathroom. All this is available at an incredibly attractive price - just 188.98 pounds! Why not invest in the comfort and convenience of your new home today",
       price: 188.98,
       image: miniatura3
-    }
+    }, {
+      id: 2,
+      title: "TYPE D – EAGLE HOUSE",
+      description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
+      price: 258.98,
+      image: miniatura2
+    },
   ];
 
   useEffect(() => {
