@@ -31,20 +31,11 @@ const CheckoutPage = () => {
   const sendEmail = (projects, invoiceNumber, total, userEmail) => {
     const templateParams = {
       to_email: userEmail,
-      from_name: 'CGI Studio',
-      message_html: `
-        <p>Order Number: ${invoiceNumber}</p>
-        <p>Thank you for purchasing our product. Please make a bank transfer to this account:</p>
-        <p>Account Details: [INSERT ACCOUNT DETAILS HERE]</p>
-        <p>Reference: ${invoiceNumber}</p>
-        <p>After payment is confirmed, files will be sent to you immediately.</p>
-        <p>Thank you for using CGI Studio.</p>
-      `,
+      invoice_number: invoiceNumber,
       total_price: total.toFixed(2),
-      invoice_number: invoiceNumber
     };
 
-    emailjs.send('service_swzxk0c', 'template_mv6x0cv', templateParams, 'rfrqp0MItfGto9k-F')
+    emailjs.send('service_swzxk0c', 'template_ddg7f5b', templateParams, 'rfrqp0MItfGto9k-F')
       .then((result) => {
         console.log(result.text);
       }, (error) => {
