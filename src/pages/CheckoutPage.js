@@ -25,12 +25,30 @@ const CheckoutPage = () => {
     // Sprawdź, czy użytkownik jest zalogowany, a następnie wyślij e-mail
     if (user) {
       sendEmail(storedProjects, newInvoiceNumber, projectTotal, user.email);
+      sendEmailToStudio(storedProjects, newInvoiceNumber, projectTotal, user.email);
     }
   }, [user]);
 
   const sendEmail = (projects, invoiceNumber, total, userEmail) => {
     const templateParams = {
       to_email: userEmail,
+      reply_to: 'cgistudiodream@gmail.com',
+      invoice_number: invoiceNumber,
+      total_price: total.toFixed(2),
+    };
+
+    emailjs.send('service_swzxk0c', 'template_ddg7f5b', templateParams, 'rfrqp0MItfGto9k-F')
+      .then((result) => {
+        console.log(result.text);
+      }, (error) => {
+        console.log(error.text);
+      });
+  };
+
+  const sendEmailToStudio = (projects, invoiceNumber, total, userEmail) => {
+    const templateParams = {
+      to_email: 'cgistudiodream@gmail.com',
+      reply_to: userEmail,
       invoice_number: invoiceNumber,
       total_price: total.toFixed(2),
     };
@@ -51,9 +69,7 @@ const CheckoutPage = () => {
       totalPrice,
     };
     purchasedProjects.push(newPurchase);
-    localStorage.setItem('purchasedProjects', JSON.stringify(purchasedProjects));
-
-    localStorage.removeItem('selectedProjects');
+    localStorage.setItem('purchasedProjects', JSON.stringify(purchasedProjects));    localStorage.removeItem('selectedProjects');
     navigate('/');
   };
 
@@ -105,3 +121,5 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
+
+
