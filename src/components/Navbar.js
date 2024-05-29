@@ -37,17 +37,17 @@ const Navbar = () => {
     backgroundPosition: 'center',
   };
 
-  const linkStyle = "block mt-4 md:inline-block md:mt-0 md:ml-6 text-lg text-gray-900 dark:text-gray-300 hover:text-pink-500";
+  const linkStyle = "block mt-4 md:inline-block md:mt-0 md:ml-6 text-lg text-black-900 dark:text-black-300 hover:text-pink-500";
 
   return (
-    <header className="text-gray-600 body-font" data-aos="fade-down" style={navbarStyle}>
+    <header className="text-black-600 body-font" data-aos="fade-down" style={navbarStyle}>
       <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
         <NavLink to="/" className="flex title-font font-medium items-center text-gray-900 mb-4 md:mb-0">
           <img src={logo} alt="logo" className="w-10 h-10 text-white m-4 bg-white-500 rounded-full" /> 
           <span className="ml-4 text-xl">CGI-STUDIO</span>
         </NavLink>
         <button 
-          className="md:hidden text-gray-500 focus:outline-none"
+          className="md:hidden text-black-500 focus:outline-none"
           onClick={toggleMenu}
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
