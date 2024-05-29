@@ -9,6 +9,7 @@ import HomePage from './pages/HomePage';
 import Projects from './pages/Projects';
 import Gallery from './pages/Gallery';
 import ContactUs from './pages/ContactUs';
+import AdminInvoicesPage from './pages/AdminPage'; // Import the new admin page
 
 const App = () => {
   return (
@@ -19,10 +20,11 @@ const App = () => {
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/user-panel" element={<UserPanel />} />
-        <Route path="/checkout" element={<CheckoutPage />} /> {/* Corrected path */}
+        <Route path="/checkout" element={<CheckoutPage />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/gallery" element={<Gallery />} />
-        <Route path="/contact-us" element={<ContactUs />} /> {/* Add the new route */}
+        <Route path="/contact-us" element={<ContactUs />} />
+        <Route path="/admin-invoices" element={<AdminInvoicesPage />} /> {/* Add the new route */}
       </Routes>
     </Router>
   );

@@ -1,14 +1,17 @@
+// src/pages/CheckoutPage.js
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import emailjs from 'emailjs-com';
-import { useAuth } from '../services/auth'; // Zaimportuj usługę uwierzytelniania z Twojej aplikacji
+import { useAuth } from '../services/auth';
+import { database } from '../firebaseConfig';
+import { ref, set } from 'firebase/database';
 
 const CheckoutPage = () => {
   const [selectedProjects, setSelectedProjects] = useState([]);
   const [totalPrice, setTotalPrice] = useState(0);
   const [invoiceNumber, setInvoiceNumber] = useState('');
   const navigate = useNavigate();
-  const { user } = useAuth(); // Uzyskaj dostęp do zalogowanego użytkownika
+  const { user } = useAuth();
 
   useEffect(() => {
     const storedProjects = JSON.parse(localStorage.getItem('selectedProjects')) || [];
@@ -22,10 +25,10 @@ const CheckoutPage = () => {
     setInvoiceNumber(newInvoiceNumber);
     localStorage.setItem('lastInvoiceNumber', JSON.stringify(lastInvoiceNumber + 1));
 
-    // Sprawdź, czy użytkownik jest zalogowany, a następnie wyślij e-mail
     if (user) {
       sendEmail(storedProjects, newInvoiceNumber, projectTotal, user.email);
       sendEmailToStudio(storedProjects, newInvoiceNumber, projectTotal, user.email);
+      saveInvoiceToFirebase(storedProjects, newInvoiceNumber, projectTotal, user.email);
     }
   }, [user]);
 
@@ -35,6 +38,9 @@ const CheckoutPage = () => {
       reply_to: 'cgistudiodream@gmail.com',
       invoice_number: invoiceNumber,
       total_price: total.toFixed(2),
+      selectedProjects: projects.map(project => ({
+        title: project.title,
+      }))
     };
 
     emailjs.send('service_swzxk0c', 'template_ddg7f5b', templateParams, 'rfrqp0MItfGto9k-F')
@@ -51,6 +57,9 @@ const CheckoutPage = () => {
       reply_to: userEmail,
       invoice_number: invoiceNumber,
       total_price: total.toFixed(2),
+      selectedProjects: projects.map(project => ({
+        title: project.title,
+      }))
     };
 
     emailjs.send('service_swzxk0c', 'template_ddg7f5b', templateParams, 'rfrqp0MItfGto9k-F')
@@ -61,16 +70,37 @@ const CheckoutPage = () => {
       });
   };
 
+  const saveInvoiceToFirebase = (projects, invoiceNumber, total, userEmail) => {
+    const invoiceData = {
+      invoiceNumber,
+      projects,
+      totalPrice: total,
+      userEmail,
+      status: 'new', // Dodanie statusu
+      createdAt: new Date().toISOString()
+    };
+
+    const newInvoiceRef = ref(database, `invoices/${invoiceNumber}`);
+    set(newInvoiceRef, invoiceData)
+      .then(() => {
+        console.log('Invoice saved to Firebase');
+      })
+      .catch((error) => {
+        console.error('Error saving invoice to Firebase:', error);
+      });
+  };
+
   const handlePlaceOrder = () => {
     const purchasedProjects = JSON.parse(localStorage.getItem('purchasedProjects')) || [];
     const newPurchase = {
       invoiceNumber,
-      projects: selectedProjects,
+      projects: selectedProjects.map(project => ({ ...project, image: 'url_do_obrazka' })),
       totalPrice,
     };
     purchasedProjects.push(newPurchase);
-    localStorage.setItem('purchasedProjects', JSON.stringify(purchasedProjects));    localStorage.removeItem('selectedProjects');
-    navigate('/');
+    localStorage.setItem('purchasedProjects', JSON.stringify(purchasedProjects));
+    localStorage.removeItem('selectedProjects');
+    navigate('/user-panel');
   };
 
   return (
@@ -90,8 +120,6 @@ const CheckoutPage = () => {
                   <img src={project.image} alt={project.title} className="w-32 h-32 mr-4 object-cover rounded-lg" />
                   <div>
                     <h5 className="text-lg font-bold text-gray-700 dark:text-gray-300">{project.title}</h5>
-                    <p className="text-gray-900 dark:text-gray-200">{project.description}</p>
-                    <p className="text-lg font-bold text-gray-900 dark:text-gray-200">£{project.price.toFixed(2)}</p>
                   </div>
                 </div>
               </li>
@@ -121,5 +149,3 @@ const CheckoutPage = () => {
 };
 
 export default CheckoutPage;
-
-
