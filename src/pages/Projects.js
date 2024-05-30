@@ -64,8 +64,8 @@ const Projects = () => {
       title: "TYPE C - DORIAN",
       description: "Welcome to explore this charming home featuring a spacious living room, kitchen with dining area, and a cozy fireplace, perfect for enjoyable evenings. Upstairs, you'll find two cozy bedrooms and a modern family bathroom. All this is available at an incredibly attractive price - just 188.98 pounds! Why not invest in the comfort and convenience of your new home today",
       images: [
-        { src: img9, caption: "First Floor" },
-        { src: img10, caption: "Front" },
+        { src: img9, caption: "Front" },
+        { src: img10, caption: "First Floor" },
         { src: img11, caption: "Ground Floor" },
         { src: img12, caption: "Left Elevation" },
         { src: img13, caption: "Rear Elevation" },
@@ -77,8 +77,8 @@ const Projects = () => {
       title: "TYPE D - EAGLE HOUSE",
       description: "The ground floor features a welcoming entrance hall with utility, a spacious kitchen/diner, a comfortable living room, and two cozy bedrooms. Upstairs, you’ll find a luxurious master bedroom with a personal en-suite and a handy small store. All this for just £258.98! Invest in your dream home today.",
       images: [
-        { src: img15, caption: "Front Elevation" },
-        { src: img16, caption: "Large First Floor " },
+        { src: img15, caption: "Large First Floor" },
+        { src: img16, caption: "Large Front " },
         { src: img17, caption: "Large Ground Floor" },
         { src: img18, caption: "Left Elevation" },
         { src: img19, caption: "Rear Elevation" },
