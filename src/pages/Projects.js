@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-// eslint-disable-next-line no-unused-vars
 import { Link, useNavigate } from 'react-router-dom';
 import Modal from 'react-modal';
 import AOS from 'aos';
@@ -39,33 +38,21 @@ const Projects = () => {
       title: "Type A - VIRION HOUSE",
       description: "Experience the perfect blend of elegance and comfort in this stunning oak frame house. The ground floor welcomes you with a spacious entrance hall featuring a convenient WC. Enjoy cozy evenings by the fireplace in the inviting living room. The modern kitchen diner and utility room offer both style and functionality. Upstairs, you'll find four double bedrooms, including a luxurious master bedroom with its own en-suite bathroom. The family bathroom provides ample space for everyone. All this can be yours for just £288.98!",
       images: [
-        { src: img1, caption: "First Floor" },
-        { src: img2, caption: "Front " },
+        { src: img1, caption: "Front" },
+        { src: img2, caption: "First floor " },
         { src: img3, caption: " Ground Floor" },
         { src: img4, caption: "Left Elevation" },
         { src: img5, caption: "Rear Elevation" },
         { src: img6, caption: "Right Elevation" }
       ]
     },
-    // {
-    //   id: 2,
-    //   title: "TYPE D - EAGLE HOUSE",
-    //   description: "The ground floor features a welcoming entrance hall with utility, a spacious kitchen/diner, a comfortable living room, and two cozy bedrooms. Upstairs, you’ll find a luxurious master bedroom with a personal en-suite and a handy small store. All this for just £258.98! Invest in your dream home today.",
-    //   images: [
-    //     { src: img15, caption: "Front Elevation" },
-    //     { src: img16, caption: "Large First Floor " },
-    //     { src: img17, caption: "Large Ground Floor" },
-    //     { src: img18, caption: "Left Elevation" },
-    //     { src: img19, caption: "Rear Elevation" },
-    //     { src: img20, caption: "Right Elevation" }]
-    // },
     {
       id: 3,
       title: "TYPE C - DORIAN",
       description: "Welcome to explore this charming home featuring a spacious living room, kitchen with dining area, and a cozy fireplace, perfect for enjoyable evenings. Upstairs, you'll find two cozy bedrooms and a modern family bathroom. All this is available at an incredibly attractive price - just 188.98 pounds! Why not invest in the comfort and convenience of your new home today",
       images: [
-        { src: img9, caption: "Front" },
-        { src: img10, caption: "First Floor" },
+        { src: img9, caption: "First Floor" },
+        { src: img10, caption: "Front" },
         { src: img11, caption: "Ground Floor" },
         { src: img12, caption: "Left Elevation" },
         { src: img13, caption: "Rear Elevation" },
@@ -97,8 +84,8 @@ const Projects = () => {
     setSelectedImage(null);
   };
 
-  const handleBuyNow = () => {
-    navigate('/login');
+  const handleBuyNow = (projectId) => {
+    navigate('/login', { state: { projectId } });
   };
 
   return (
@@ -117,7 +104,7 @@ const Projects = () => {
                 >
                   <img 
                     src={image.src} 
-                    alt={`${project.title}                  ${index + 1}`} 
+                    alt={`${project.title} ${index + 1}`} 
                     className="w-full h-40 object-cover mb-4 rounded-md cursor-pointer"
                     onClick={() => openModal(image)}
                   />
@@ -125,14 +112,13 @@ const Projects = () => {
                 </div>
               ))}
             </div>
+            <div className="flex justify-center mt-4">
+              <button onClick={() => handleBuyNow(project.id)} className="bg-purple-500 hover:bg-purple-600 text-white py-3 px-8 rounded-md text-lg">
+                Buy Now
+              </button>
+            </div>
           </div>
         ))}
-        
-        <div className="flex justify-center">
-          <button onClick={handleBuyNow} className="bg-purple-500 hover:bg-purple-600 text-white py-3 px-8 rounded-md text-lg">
-            Buy Now
-          </button>
-        </div>
       </div>
 
       <Modal 
@@ -158,4 +144,3 @@ const Projects = () => {
 };
 
 export default Projects;
-
