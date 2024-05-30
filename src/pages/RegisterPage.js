@@ -106,7 +106,7 @@ const RegisterPage = () => {
                 />
                 <div className="ml-3 text-sm">
                   <label htmlFor="terms" className="font-light text-gray-500 dark:text-gray-300">
-                    I accept the <a href="/#" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Terms and Conditions</a>
+                    I accept the <a href="https://www.termsandconditionsgenerator.com/live.php?token=A0UA7lhL1o2wX9hn0qjMG5EjueG0e8Pk" className="font-medium text-primary-600 hover:underline dark:text-primary-500">Terms and Conditions</a>
                     </label>
                 </div>
               </div>
