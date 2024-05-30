@@ -1,9 +1,10 @@
+// src/pages/HomePage.js
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import video from '../Assets/video barbara.mp4';
-import Comments from './comments';
+import Comments from '../components/comments'; // Update the import path if necessary
 import logo from '../Assets/logo.png';
 import dom1 from '../Assets/homepage/dom1/A.png';
 import dom2 from '../Assets/homepage/dom1/B.png';
@@ -31,9 +32,9 @@ const HomePage = () => {
       </div>
       <div className="grid max-w-screen-xl px-4 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7" data-aos="fade-right">
-        <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Welcome to CGI Studio, where we specialize in modern home designs that seamlessly blend functionality, aesthetics, and innovative architecture. Our attention to detail ensures that each home we create meets and exceeds the expectations of our clients.</p>
-<p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Whether you're looking for a simple bungalow or a luxury residence, CGI Studio offers comprehensive design solutions tailored to your needs.</p>
-<p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">In these times of rising costs, we proudly offer pocket-friendly planning drawings that don't compromise on quality. With extensive experience in designing houses, apartments, and public spaces, we invite you to explore and choose the perfect building design for you. Invest in your dream home today with CGI Studio.</p>
+          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Welcome to CGI Studio, where we specialize in modern home designs that seamlessly blend functionality, aesthetics, and innovative architecture. Our attention to detail ensures that each home we create meets and exceeds the expectations of our clients.</p>
+          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">Whether you're looking for a simple bungalow or a luxury residence, CGI Studio offers comprehensive design solutions tailored to your needs.</p>
+          <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl dark:text-gray-400">In these times of rising costs, we proudly offer pocket-friendly planning drawings that don't compromise on quality. With extensive experience in designing houses, apartments, and public spaces, we invite you to explore and choose the perfect building design for you. Invest in your dream home today with CGI Studio.</p>
           <div className="flex justify-center">
             <button className="inline-flex text-white bg-indigo-500 border-0 py-2 px-6 focus:outline-none hover:bg-indigo-600 rounded text-lg">
               <Link to="/register">Get Started</Link>
@@ -82,7 +83,7 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <Comments />
+      <Comments /> {/* Ensure the Comments component is included */}
       <footer className="bg-gray-800 text-gray-200 py-4 text-center">
         <div className="container mx-auto">
           <p>© {new Date().getFullYear()} CGI Studio. All rights reserved.</p>
