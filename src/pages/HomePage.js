@@ -1,10 +1,12 @@
 // src/pages/HomePage.js
+
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import video from '../Assets/video barbara.mp4';
 import Comments from '../components/comments'; // Update the import path if necessary
+import CookiesConsent from '../components/cookiesContent'; // Import the CookiesConsent component
 import logo from '../Assets/logo.png';
 import dom1 from '../Assets/homepage/dom1/A.png';
 import dom2 from '../Assets/homepage/dom1/B.png';
@@ -26,6 +28,7 @@ const HomePage = () => {
 
   return (
     <section className="bg-white dark:bg-gray-900">
+      <CookiesConsent /> {/* Include the CookiesConsent component */}
       <div className="flex flex-col items-center py-8">
         <img src={logo} alt="logo" className="mb-4" />
         <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white text-center">Welcome to CGI Studio</h1>
