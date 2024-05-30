@@ -6,7 +6,7 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import video from '../Assets/video barbara.mp4';
 import Comments from '../components/comments'; // Update the import path if necessary
-import CookiesConsent from '../components/CookiesConsent'; // Import the CookiesConsent component
+import CookiesConsent from '../components/cookiesContent'; // Import the CookiesConsent component
 import logo from '../Assets/logo.png';
 import dom1 from '../Assets/homepage/dom1/A.png';
 import dom2 from '../Assets/homepage/dom1/B.png';
