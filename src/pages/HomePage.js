@@ -5,8 +5,8 @@ import { Link } from 'react-router-dom';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 import video from '../Assets/video barbara.mp4';
-import Comments from '../components/comments'; 
-import CookiesConsent from '../components/cookiesContent'; 
+import Comments from '../components/comments'; // Update the import path if necessary
+import CookiesConsent from '../components/CookiesConsent'; // Import the CookiesConsent component
 import logo from '../Assets/logo.png';
 import dom1 from '../Assets/homepage/dom1/A.png';
 import dom2 from '../Assets/homepage/dom1/B.png';
@@ -28,7 +28,7 @@ const HomePage = () => {
 
   return (
     <section className="bg-white dark:bg-gray-900">
-      <CookiesConsent /> 
+      <CookiesConsent /> {/* Include the CookiesConsent component */}
       <div className="flex flex-col items-center py-8">
         <img src={logo} alt="logo" className="mb-4" />
         <h1 className="text-4xl font-extrabold tracking-tight leading-none md:text-5xl xl:text-6xl dark:text-white text-center">Welcome to CGI Studio</h1>
@@ -86,11 +86,13 @@ const HomePage = () => {
           </div>
         </div>
       </section>
-      <Comments /> 
+      <Comments /> {/* Ensure the Comments component is included */}
       <footer className="bg-gray-800 text-gray-200 py-4 text-center">
         <div className="container mx-auto">
           <p>© {new Date().getFullYear()} CGI Studio. All rights reserved.</p>
           <a href="https://facebook.com" className="text-indigo-500 hover:text-indigo-700 mx-2">Facebook</a>
+          <a href="https://www.freeprivacypolicy.com/live/24b6f118-6ab2-4bf2-863b-b8d75ebf3cab" className="text-indigo-500 hover:text-indigo-700 mx-2">Privacy Policy</a>
+          <a href="https://www.termsandconditionsgenerator.com/live.php?token=A0UA7lhL1o2wX9hn0qjMG5EjueG0e8Pk" className="text-indigo-500 hover:text-indigo-700 mx-2">Terms and Conditions</a>
         </div>
       </footer>
     </section>
