@@ -90,7 +90,8 @@ const HomePage = () => {
       <footer className="bg-gray-800 text-gray-200 py-4 text-center">
         <div className="container mx-auto">
           <p>© {new Date().getFullYear()} CGI Studio. All rights reserved.</p>
-          <a href="https://facebook.com" className="text-indigo-500 hover:text-indigo-700 mx-2">Facebook</a>
+          <a href="https://www.facebook.com/profile.php?id=100082563469468" className="text-indigo-500 hover:text-indigo-700 mx-2">Facebook</a>
+          <a href="www.linkedin.com/in/cgi-cg-istudio-011723310" className="text-indigo-500 hover:text-indigo-700 mx-2">LinkedIn</a>
           <a href="https://www.freeprivacypolicy.com/live/24b6f118-6ab2-4bf2-863b-b8d75ebf3cab" className="text-indigo-500 hover:text-indigo-700 mx-2">Privacy Policy</a>
           <a href="https://www.termsandconditionsgenerator.com/live.php?token=A0UA7lhL1o2wX9hn0qjMG5EjueG0e8Pk" className="text-indigo-500 hover:text-indigo-700 mx-2">Terms and Conditions</a>
         </div>
