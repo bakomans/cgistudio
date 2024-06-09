@@ -56,7 +56,7 @@ const Projects = () => {
     {
       id: 4,
       title: "TAPE B – ATOMIUM ",
-      description: "The downstairs layout comprises an living dining area with a bathroom where your guest can enjoy their time having BBQ on a patio with direct exit from the guest house. For only 128 pounds you can make you family feel like on the vacation and leave your own household in peace. Make yourself happy and make your family dreams come true. Let them enjoy a first floor master bedroom especially made for them where they can have their alone time",
+      description: "The downstairs layout comprises an living dining area with a bathroom where your guest can enjoy their time having BBQ on a patio with direct exit from the guest house. For only 168 pounds you can make you family feel like on the vacation and leave your own household in peace. Make yourself happy and make your family dreams come true. Let them enjoy a first floor master bedroom especially made for them where they can have their alone time",
       images: [
         { src: img7, caption: "First Floor" },
         { src: img8, caption: "Front " },
