@@ -11,6 +11,12 @@ import img3 from '../Assets/projects/projekt1/LARGE GF.png';
 import img4 from '../Assets/projects/projekt1/LEFT ELEVATION.png';
 import img5 from '../Assets/projects/projekt1/REAR ELEVATION.png';
 import img6 from '../Assets/projects/projekt1/RIGHT ELEVATION.png';
+import img7 from '../Assets/projects/project4/FF.png';
+import img8 from '../Assets/projects/project4/FRONT.png';
+import img22 from '../Assets/projects/project4/GF.png';
+import img21 from '../Assets/projects/project4/LEFT.png';
+import img23 from '../Assets/projects/project4/REAR.png';
+import img24 from '../Assets/projects/project4/RIGHT.png';
 import img9 from '../Assets/projects/project3/FF.png';
 import img10 from '../Assets/projects/project3/FRONT.png';
 import img11 from '../Assets/projects/project3/GF.png';
@@ -48,6 +54,19 @@ const Projects = () => {
       ]
     },
     {
+      id: 4,
+      title: "TAPE B – ATOMIUM ",
+      description: "The downstairs layout comprises an living dining area with a bathroom where your guest can enjoy their time having BBQ on a patio with direct exit from the guest house. For only 128 pounds you can make you family feel like on the vacation and leave your own household in peace. Make yourself happy and make your family dreams come true. Let them enjoy a first floor master bedroom especially made for them where they can have their alone time",
+      images: [
+        { src: img7, caption: "First Floor" },
+        { src: img8, caption: "Front " },
+        { src: img21, caption: " Left Elevation" },
+        { src: img22, caption: "Ground Floor" },
+        { src: img23, caption: "Rear Elevation" },
+        { src: img24, caption: "Right Elevation" }
+      ]
+    },
+    {
       id: 3,
       title: "TYPE C - DORIAN",
       description: "Welcome to explore this charming home featuring a spacious living room, kitchen with dining area, and a cozy fireplace, perfect for enjoyable evenings. Upstairs, you'll find two cozy bedrooms and a modern family bathroom. All this is available at an incredibly attractive price - just 188.98 pounds! Why not invest in the comfort and convenience of your new home today",
@@ -72,7 +91,7 @@ const Projects = () => {
         { src: img19, caption: "Rear Elevation" },
         { src: img20, caption: "Right Elevation" }]
     },
-    // Dodaj więcej projektów tutaj
+    
   ];
 
   const openModal = (image) => {

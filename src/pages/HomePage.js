@@ -20,6 +20,10 @@ import dom9 from '../Assets/homepage/dom2/A.png';
 import dom10 from '../Assets/homepage/dom2/B.png';
 import dom11 from '../Assets/homepage/dom2/C.png';
 import dom12 from '../Assets/homepage/dom2/D.png';
+import dom13 from '../Assets/homepage/dom4/A.png';
+import dom14 from '../Assets/homepage/dom4/B.png';
+import dom15 from '../Assets/homepage/dom4/C.png';
+import dom16 from '../Assets/homepage/dom4/D.png';
 
 const HomePage = () => {
   useEffect(() => {
@@ -57,6 +61,10 @@ const HomePage = () => {
           { src: dom2, alt: "dom2", aos: "fade-down" },
           { src: dom3, alt: "dom3", aos: "fade-right" },
           { src: dom4, alt: "dom4", aos: "fade-left" },
+          { src: dom13, alt: "dom13", aos: "fade-UP" },
+          { src: dom14, alt: "dom14", aos: "fade-left" },
+          { src: dom15, alt: "dom15", aos: "fade-down" },
+          { src: dom16, alt: "dom16", aos: "fade-right" },
           { src: dom5, alt: "dom5", aos: "flip-up" },
           { src: dom6, alt: "dom6", aos: "flip-down" },
           { src: dom7, alt: "dom7", aos: "zoom-in" },
@@ -64,7 +72,8 @@ const HomePage = () => {
           { src: dom9, alt: "dom9", aos: "fade-up" },
           { src: dom10, alt: "dom10", aos: "fade-down" },
           { src: dom11, alt: "dom11", aos: "fade-right" },
-          { src: dom12, alt: "dom11", aos: "fade-left" },
+          { src: dom12, alt: "dom12", aos: "fade-left" },
+          
         ].map((image, index) => (
           <div key={index} className="relative overflow-hidden rounded-lg shadow-md" data-aos={image.aos}>
             <img className="w-auto h-60 object-cover" src={image.src} alt={image.alt} />

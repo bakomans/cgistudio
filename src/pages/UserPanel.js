@@ -6,6 +6,7 @@ import 'aos/dist/aos.css';
 import miniatura1 from '../Assets/homepage/dom1/A.png';
 import miniatura2 from '../Assets/homepage/dom2/C.png';
 import miniatura3 from '../Assets/homepage/dom3/A.png';
+import miniatura4 from '../Assets/homepage/dom4/A.png';
 import makeMySitePlanImage from '../Assets/ziemia.jpg';
 
 const UserPanel = () => {
@@ -25,6 +26,14 @@ const UserPanel = () => {
       image: miniatura1
     },
     {
+      id: 4,
+      title: "TYPE B – ATOMIUM",
+      description: "The downstairs layout comprises an living dining area with a bathroom where your guest can enjoy their time having BBQ on a patio with direct exit from the guest house. For only 168 pounds you can make you family feel like on the vacation and leave your own household in peace. Make yourself happy and make your family dreams come true. Let them enjoy a first floor master bedroom especially made for them where they can have their alone time.",
+      price: 
+      168 ,
+      image: miniatura4
+    },
+    {
       id: 3,
       title: "TYPE C – DORIAN HOUSE",
       description: "Welcome to explore this charming home featuring a spacious living room, kitchen with dining area, and a cozy fireplace, perfect for enjoyable evenings. Upstairs, you'll find two cozy bedrooms and a modern family bathroom. All this is available at an incredibly attractive price - just 188.98 pounds! Why not invest in the comfort and convenience of your new home today",
@@ -37,6 +46,8 @@ const UserPanel = () => {
       price: 258.98,
       image: miniatura2
     },
+    
+  
   ];
 
   useEffect(() => {
